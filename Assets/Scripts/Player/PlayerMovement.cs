@@ -36,13 +36,13 @@ public class PlayerMovement : MonoBehaviour
             canDodgeroll = false;
             dodgerollTime = Time.time + dodgerollLength;
             dodgerollResetTime = Time.time + dodgerollLength + dodgerollCooldown;
-            col.enabled = false;
+            Physics2D.IgnoreLayerCollision(7, 9, true);
         }
 
         if (dodgeroll && Time.time >= dodgerollTime)
         {
             dodgeroll = false;
-            col.enabled = true;
+            Physics2D.IgnoreLayerCollision(7, 9, false);
         }
 
         if (!canDodgeroll && Time.time >= dodgerollResetTime)
