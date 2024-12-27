@@ -3376,7 +3376,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c5c7362ac2445054b843f237a7744fc3, type: 2}
   - {fileID: 11400000, guid: 43b28b26d01fd8847b1ba605a0ba5ff8, type: 2}
   currPat: 0
-  on: 0
+  on: 1
 --- !u!4 &1614095348
 Transform:
   m_ObjectHideFlags: 0
@@ -3405,14 +3405,6 @@ PrefabInstance:
     - target: {fileID: 2233342640212133036, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2233342640212133036, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733432724750755240, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: speed
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5408514469421593940, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_LocalPosition.x
