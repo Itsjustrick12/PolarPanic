@@ -34,7 +34,7 @@ public class ShieldController : MonoBehaviour
         pivot.position = pivotObj.transform.position;
         pivot.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !broken)
         {
             polarity *= -1;
             spriteRenderer.color = polarity == 1 ? Color.red : Color.blue;
