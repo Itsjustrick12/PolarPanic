@@ -2,8 +2,8 @@ using UnityEngine;
 public enum WaveType
 {
     Random,
+    Corners,
     CornerLine,
-    Circle,
     Middle
 
 }
@@ -14,4 +14,5 @@ public class WavePattern : ScriptableObject
     public WaveType type = WaveType.Random;
     public GameObject primary = null;
     public GameObject secondary = null;
+    public bool spacing = false;
 }
