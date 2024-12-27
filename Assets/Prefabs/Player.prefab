@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &314547283024752476
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -132,10 +132,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSmoothing: 0.02
   speed: 10
-  dodgeroll: 0
   dodgerollLength: 0.3
   dodgerollCooldown: 1
   dodgerollSpeedMultiplier: 2.5
+  shield: {fileID: 2339034056926762324}
 --- !u!61 &973749282022505837
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -283,6 +283,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a1c91bbb79134499f52b967073263b, type: 3}
+--- !u!114 &2339034056926762324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5373957081925638998, guid: b8a1c91bbb79134499f52b967073263b, type: 3}
+  m_PrefabInstance: {fileID: 7701659400216661506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8f2ae44ef6f2c4c9c81367400df9fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2667035653304907724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5756441040349051342, guid: b8a1c91bbb79134499f52b967073263b, type: 3}

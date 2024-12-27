@@ -10,12 +10,13 @@ public class PlayerMovement : MonoBehaviour
     [Range(0, .3f)][SerializeField] private float movementSmoothing = 0.01f;
     [SerializeField] private float speed = 10.0f;
     private float calculatedSpeed = 10.0f;
-    public bool dodgeroll = false;
+    public static bool dodgeroll = false;
     private bool canDodgeroll = true;
     private float dodgerollTime, dodgerollResetTime;
     [SerializeField] private float dodgerollLength = 0.3f;
     [SerializeField] private float dodgerollCooldown = 0.3f;
     [SerializeField] private float dodgerollSpeedMultiplier = 1.3f;
+    [SerializeField] private ShieldController shield;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,11 +38,13 @@ public class PlayerMovement : MonoBehaviour
             dodgerollTime = Time.time + dodgerollLength;
             dodgerollResetTime = Time.time + dodgerollLength + dodgerollCooldown;
             Physics2D.IgnoreLayerCollision(7, 9, true);
+            shield.SetActive(false);
         }
 
         if (dodgeroll && Time.time >= dodgerollTime)
         {
             dodgeroll = false;
+            shield.SetActive(true);
             Physics2D.IgnoreLayerCollision(7, 9, false);
         }
 

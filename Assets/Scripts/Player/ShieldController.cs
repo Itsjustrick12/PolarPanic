@@ -99,8 +99,21 @@ public class ShieldController : MonoBehaviour
     private void Restore()
     {
         broken = false;
-        spriteRenderer.enabled = true;
-        magnetCollider.enabled = true;
-        shieldCollider.enabled = true;
+        if (!PlayerMovement.dodgeroll)
+        {
+            spriteRenderer.enabled = true;
+            magnetCollider.enabled = true;
+            shieldCollider.enabled = true;
+        }       
+    }
+
+    public void SetActive(bool active)
+    {
+        if (!broken)
+        {
+            spriteRenderer.enabled = active;
+            magnetCollider.enabled = active;
+            shieldCollider.enabled = active;
+        }
     }
 }
