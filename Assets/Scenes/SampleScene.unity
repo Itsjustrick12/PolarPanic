@@ -3775,9 +3775,8 @@ MonoBehaviour:
   currState: 1
   waveDelay: 5
   patterns:
-  - {fileID: 11400000, guid: e235e42308fbd9f4fbc2d09728145020, type: 2}
-  - {fileID: 11400000, guid: c5c7362ac2445054b843f237a7744fc3, type: 2}
-  - {fileID: 11400000, guid: 43b28b26d01fd8847b1ba605a0ba5ff8, type: 2}
+  - {fileID: 11400000, guid: 8148849de70b83b4a8d3e39104855fb2, type: 2}
+  - {fileID: 11400000, guid: 6728734a1c30c4e409269008c7bd1d17, type: 2}
   currPat: 0
   on: 1
 --- !u!4 &1614095348
@@ -3808,6 +3807,10 @@ PrefabInstance:
     - target: {fileID: 2233342640212133036, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2233342640212133036, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5408514469421593940, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_LocalPosition.x

@@ -70,6 +70,9 @@ public class EnemySpawner : MonoBehaviour
                 currState = SpawnerState.SPAWNING;
                 Debug.Log("Spawning new wave...");
                 SpawnPattern(patterns[currPat]);
+            }
+            else if (numAlive == 0)
+            {
                 StartCoroutine(StartDelay());
             }
         }
@@ -112,9 +115,107 @@ public class EnemySpawner : MonoBehaviour
             case WaveType.Random:
                 RandomPattern(pat);
                 break;
-
+            case WaveType.Corners:
+                CornerPattern(pat);
+                break;
+            case WaveType.Middle:
+                MiddlePattern(pat);
+                break;
             default:
                 break;
+        }
+    }
+
+    private void MiddlePattern(WavePattern pat)
+    {
+        bool localSpacing = false;
+
+        GameObject objToSpawn = pat.primary;
+
+
+         int midpoint = (positions.Capacity - 1) / 2;
+
+         //Center
+         SpawnAtPoint(objToSpawn, midpoint, midpoint);
+         SpawnAtPoint(objToSpawn, midpoint + 1, midpoint);
+         SpawnAtPoint(objToSpawn, midpoint, midpoint + 1);
+         SpawnAtPoint(objToSpawn, midpoint + 1, midpoint + 1);
+
+         objToSpawn = pat.secondary;
+
+        if (pat.numToSpawn > 1)
+        {
+            //Top left
+            SpawnAtPoint(objToSpawn, midpoint -1, midpoint);
+            SpawnAtPoint(objToSpawn, midpoint, midpoint -1);
+                
+
+            //Top Right
+            SpawnAtPoint(objToSpawn, midpoint + 2, midpoint);
+            SpawnAtPoint(objToSpawn, midpoint + 1, midpoint -1);
+
+            //Bottom left
+            SpawnAtPoint(objToSpawn, midpoint - 1, midpoint + 1);
+            SpawnAtPoint(objToSpawn, midpoint, midpoint + 2);
+
+
+            //Bottom Right
+            SpawnAtPoint(objToSpawn, midpoint + 1, midpoint + 2);
+            SpawnAtPoint(objToSpawn, midpoint + 2, midpoint + 1);
+        }
+
+
+
+            
+        
+    }
+
+    private void CornerPattern(WavePattern pat)
+    {
+        bool localSpacing = false;
+        for (int i = 0; i < pat.numToSpawn; i++)
+        {
+            if (pat.spacing && !localSpacing)
+            {
+                localSpacing = true;
+            }
+            else
+            {
+                localSpacing = false;
+            }
+
+            if (!localSpacing)
+            {
+                GameObject objToSpawn = pat.secondary;
+                if (i==0)
+                {
+                    objToSpawn = pat.primary;
+                }
+
+                if (i == 0)
+                {
+                    SpawnAtPoint(objToSpawn, 0, 0); //Top Left
+                    SpawnAtPoint(objToSpawn, positions.Capacity - 1, 0); //Top Right
+                    SpawnAtPoint(objToSpawn, 0, positions[0].Capacity - 1); //Bottom Left
+                    SpawnAtPoint(objToSpawn, positions.Capacity - 1, positions[0].Capacity - 1); //Bottom Right
+                }
+                else
+                {
+                    SpawnAtPoint(objToSpawn, i, 0); 
+                    SpawnAtPoint(objToSpawn, 0, i); 
+
+                    SpawnAtPoint(objToSpawn, positions.Capacity - i - 1, 0); //Top Right
+                    SpawnAtPoint(objToSpawn, 0, positions[i].Capacity - i - 1); //Top Right
+
+                    SpawnAtPoint(objToSpawn, i, positions[i].Capacity - 1); //Bottom Left
+                    SpawnAtPoint(objToSpawn, positions.Capacity - 1 - i, positions[i].Capacity - 1); //Bottom Left
+
+                    SpawnAtPoint(objToSpawn, positions.Capacity - 1, i); //Bottom Right
+                    SpawnAtPoint(objToSpawn, positions.Capacity - 1, positions[i].Capacity - 1 - i); //Bottom Right
+
+                }
+
+            }
         }
     }
 
@@ -144,32 +245,31 @@ public class EnemySpawner : MonoBehaviour
 
     private void CornerLine(WavePattern pat)
     {
+        bool localSpacing = false;
         for (int i = 0; i < pat.numToSpawn; i++)
         {
-            GameObject objToSpawn = pat.secondary;
-            if (pat.numToSpawn - 1 == i)
+            if (pat.spacing && !localSpacing)
             {
-                objToSpawn = pat.primary;
+                localSpacing = true;
             }
-            for (int j = 0; j <= 3; j++)
+            else
             {
-                switch (j)
+                localSpacing = false;
+            }
+
+            if(!localSpacing)
+            {
+                GameObject objToSpawn = pat.secondary;
+                if (pat.numToSpawn - 1 == i || (pat.numToSpawn - 2 == i && pat.spacing))
                 {
-                    case 0:
-                        SpawnAtPoint(objToSpawn, i, i); //Top Left
-                        break;
-                    case 1:
-                        SpawnAtPoint(objToSpawn, positions.Capacity-i-1, i); //Top Right
-                        break;
-                    case 2:
-                        SpawnAtPoint(objToSpawn, i, positions[i].Capacity - i -1); //Bottom Left
-                        break;
-                    case 3:
-                        SpawnAtPoint(objToSpawn, positions.Capacity - i - 1, positions[i].Capacity - i - 1); //Bottom Right
-                        break;
-                    default:
-                        break;
+                    objToSpawn = pat.primary;
                 }
+
+                SpawnAtPoint(objToSpawn, i, i); //Top Left
+                SpawnAtPoint(objToSpawn, positions.Capacity-i-1, i); //Top Right
+                SpawnAtPoint(objToSpawn, i, positions[i].Capacity - i -1); //Bottom Left
+                SpawnAtPoint(objToSpawn, positions.Capacity - i - 1, positions[i].Capacity - i - 1); //Bottom Right
+
             }
         }
     }
