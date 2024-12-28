@@ -13,23 +13,23 @@ public class BurstBulletPattern : BulletPattern
     [SerializeField] public float posOffset = 1f;
     [Tooltip("Whether or not to use the source's rotation to rotate the pattern")]
     [SerializeField] public bool useSourceRotation = true;
-    float sourceZRot = 0f;
 
 
-    public override void SpawnPattern(Transform _spawnPos)
+    public override void SpawnPattern(Transform _spawnPos, float _initialForce, int _polarity)
     {
         if(numBullets <= 0)
         {
             return;
         }
 
-        GameManager.instance.StartCoroutine(ShootAndWait(_spawnPos, numBullets));
+        GameManager.instance.StartCoroutine(ShootAndWait(_spawnPos, numBullets, _initialForce, _polarity));
     }
 
-    public IEnumerator ShootAndWait(Transform _spawnPos, int _numBulletsRemaining)
+    public IEnumerator ShootAndWait(Transform _spawnPos, int _numBulletsRemaining, float _initialForce, int _polarity)
     {
-        Quaternion _newBulletDir = Quaternion.Euler(0f, 0f, rotOffset + _spawnPos.eulerAngles.z);
-        Instantiate(patternBullet, _spawnPos.position + posOffset * (_newBulletDir * Vector3.right), _newBulletDir);
+        Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, rotOffset + (useSourceRotation ? _spawnPos.eulerAngles.z : 0f)) * Vector3.right;
+        FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialForce, _polarity);
+
         _numBulletsRemaining--;
 
         //Stop shooting
@@ -39,6 +39,6 @@ public class BurstBulletPattern : BulletPattern
         }
 
         yield return new WaitForSeconds(timeBetweenShots);
-        GameManager.instance.StartCoroutine(ShootAndWait(_spawnPos, _numBulletsRemaining));
+        GameManager.instance.StartCoroutine(ShootAndWait(_spawnPos, _numBulletsRemaining, _initialForce, _polarity));
     }
 }

@@ -17,7 +17,7 @@ public class RangeBulletPattern : BulletPattern
     float sourceZRot = 0f;
 
 
-    public override void SpawnPattern(Transform _spawnPos)
+    public override void SpawnPattern(Transform _spawnPos, float _initialForce, int _polarity)
     {
         if (useSourceRotation)
         {
@@ -30,8 +30,9 @@ public class RangeBulletPattern : BulletPattern
 
             for (int i = 0; i < numBullets; i++)
             {
-                Quaternion _newBulletDir = Quaternion.Euler(0f, 0f, _midSpread + Random.Range(-range, range));
-                Instantiate(patternBullet, _spawnPos.position + posOffset * (_newBulletDir * Vector3.right), _newBulletDir);
+                Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, _midSpread + Random.Range(-range, range)) * Vector3.right;
+                Bullet _newBullet = Instantiate(patternBullet, _spawnPos.position + posOffset * _newBulletDir, Quaternion.identity);
+                FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialForce, _polarity);
             }
         }
         else
@@ -40,8 +41,8 @@ public class RangeBulletPattern : BulletPattern
             if (numBullets == 1)
             {
                 float _midSpread = rotOffset + sourceZRot;
-                Quaternion _newBulletDir = Quaternion.Euler(0f, 0f, _midSpread);
-                Instantiate(patternBullet, _spawnPos.position + posOffset * (_newBulletDir * Vector3.right), _newBulletDir);
+                Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, _midSpread) * Vector3.right;
+                FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialForce, _polarity);
             }
             else
             {
@@ -50,8 +51,9 @@ public class RangeBulletPattern : BulletPattern
 
                 for (int i = 0; i < numBullets; i++)
                 {
-                    Quaternion _newBulletDir = Quaternion.Euler(0f, 0f, i * _between + (rotOffset - range) + sourceZRot);
-                    Instantiate(patternBullet, _spawnPos.position + posOffset * (_newBulletDir * Vector3.right), _newBulletDir);
+                    Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, i * _between + (rotOffset - range) + sourceZRot) * Vector3.right;
+                    Bullet _newBullet = Instantiate(patternBullet, _spawnPos.position + posOffset * _newBulletDir, Quaternion.identity);
+                    FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialForce, _polarity);
                 }
             }
         }

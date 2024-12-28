@@ -9,15 +9,16 @@ public class CircleBulletPattern : BulletPattern
     [Tooltip("Use to keep all bullets from spawning directly on center")]
     [SerializeField] public float posOffset = 1f;
 
-    public override void SpawnPattern(Transform _spawnPos)
+    public override void SpawnPattern(Transform _spawnPos, float _initialForce, int _polarity)
     {
         //How much space between each shot in radians
-        float _between = (360f) / numBullets;
+        float _between = 360f / numBullets;
 
         for (int i = 0; i < numBullets; i++)
         {
-            Quaternion _newBulletDir = Quaternion.Euler(0f, 0f, i * _between + rotOffset);
-            Instantiate(patternBullet, _spawnPos.position + posOffset * (_newBulletDir * Vector3.right), _newBulletDir);
+            Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, i * _between + rotOffset) * Vector3.right;
+            Bullet _newBullet = Instantiate(patternBullet, _spawnPos.position + posOffset * _newBulletDir, Quaternion.identity);
+            FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialForce, _polarity);
         }
     }
 }
