@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: de39a476b78d67047ab33ba5d792c32f
+guid: b6f22dd43d810604d96f1bef1f9399da
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8142960979250547837
-    second: Blue Box_0
+      213: -6265320276793015901
+    second: Blue Bullet Big_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,30 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue Box_0
+      name: Blue Bullet Big_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 2
+        y: 2
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d7c881c0edb910170800000000000000
-      internalID: 8142960979250547837
+      spriteID: 3a143b1476c1d09a0800000000000000
+      internalID: -6265320276793015901
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Blue Box_0: 8142960979250547837
+      Blue Bullet Big_0: -6265320276793015901
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

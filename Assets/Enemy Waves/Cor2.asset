@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f4516e9e9f5bdb40a7802cf9de3afac, type: 3}
-  m_Name: CornerLine
+  m_Name: Cor2
   m_EditorClassIdentifier: 
-  numToSpawn: 4
+  numToSpawn: 2
   type: 1
-  primary: {fileID: 3878776338464377130, guid: 3332594fce0430a4692a00176e0574d1, type: 3}
-  secondary: {fileID: 3878776338464377130, guid: c8cbd4495bf094b48b3a7255d096c35a, type: 3}
+  primary: {fileID: 3878776338464377130, guid: c8cbd4495bf094b48b3a7255d096c35a, type: 3}
+  secondary: {fileID: 3878776338464377130, guid: 3332594fce0430a4692a00176e0574d1, type: 3}
   spacing: 0

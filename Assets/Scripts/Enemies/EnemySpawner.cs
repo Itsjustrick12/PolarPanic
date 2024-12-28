@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K))
             {
                 //test function to kill random enemy from those alive
-                if (enemies.Capacity > 0 && numAlive > 0)
+                if (enemies.Count > 0 && numAlive > 0)
                 {
                     Destroy(enemies[0]);
                     enemies.RemoveAt(0);
@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
                 Debug.Log("Spawning new wave...");
                 SpawnPattern(patterns[currPat]);
             }
-            else if (numAlive == 0)
+            else if (numAlive == 0 && Input.GetKeyDown(KeyCode.Space))
             {
                 StartCoroutine(StartDelay());
             }
@@ -91,18 +91,24 @@ public class EnemySpawner : MonoBehaviour
         Vector3 TL = topLeft.position;
         Vector3 BR = bottomRight.position;
 
-        for (int i = (int)TL.x; i < (int)BR.x; i++)
-        {
-            //Add new row for each position
-            positions.Add(new List<Vector3>());
-            for (int j = (int)TL.y; j > (int)BR.y; j--)
-            {
-                Vector3 newPoint = new Vector3(i, j, 0);
+        //Debug.Log((int)BR.x - (int)TL.x);
 
-                //Add new vector 3
-                positions[i-(int)TL.x].Add(newPoint);
+            for (int i = (int)TL.x; i < (int)BR.x; i++)
+            {
+                //Add new row for each position
+                positions.Add(new List<Vector3>());
+                for (int j = 24; j > 0; j--)
+                {
+                    Vector3 newPoint = new Vector3(i, j-12, 0);
+
+                    //Add new vector 3
+                    positions[i - (int)TL.x].Add(newPoint);
+                    //Debug.Log("Created Position Point at: (" + (i - (int)TL.x) + ", " + j + ")");
+                }
             }
-        }
+        
+
+        //Debug.Log("Capacity" + positions.Count);
     }
 
     public void SpawnPattern(WavePattern pat)
@@ -128,12 +134,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void MiddlePattern(WavePattern pat)
     {
-        bool localSpacing = false;
 
         GameObject objToSpawn = pat.primary;
 
 
-         int midpoint = (positions.Capacity - 1) / 2;
+         int midpoint = (positions.Count-1) / 2;
 
          //Center
          SpawnAtPoint(objToSpawn, midpoint, midpoint);
@@ -162,11 +167,7 @@ public class EnemySpawner : MonoBehaviour
             //Bottom Right
             SpawnAtPoint(objToSpawn, midpoint + 1, midpoint + 2);
             SpawnAtPoint(objToSpawn, midpoint + 2, midpoint + 1);
-        }
-
-
-
-            
+        }   
         
     }
 
@@ -195,23 +196,23 @@ public class EnemySpawner : MonoBehaviour
                 if (i == 0)
                 {
                     SpawnAtPoint(objToSpawn, 0, 0); //Top Left
-                    SpawnAtPoint(objToSpawn, positions.Capacity - 1, 0); //Top Right
-                    SpawnAtPoint(objToSpawn, 0, positions[0].Capacity - 1); //Bottom Left
-                    SpawnAtPoint(objToSpawn, positions.Capacity - 1, positions[0].Capacity - 1); //Bottom Right
+                    SpawnAtPoint(objToSpawn, positions.Count-1, 0); //Top Right
+                    SpawnAtPoint(objToSpawn, 0, positions[0].Count-1); //Bottom Left
+                    SpawnAtPoint(objToSpawn, positions.Count - 1, positions[0].Count - 1); //Bottom Right
                 }
                 else
                 {
                     SpawnAtPoint(objToSpawn, i, 0); 
                     SpawnAtPoint(objToSpawn, 0, i); 
 
-                    SpawnAtPoint(objToSpawn, positions.Capacity - i - 1, 0); //Top Right
-                    SpawnAtPoint(objToSpawn, 0, positions[i].Capacity - i - 1); //Top Right
+                    SpawnAtPoint(objToSpawn, positions.Count - 1 - i, 0); //Top Right
+                    SpawnAtPoint(objToSpawn, 0, positions[i].Count - 1 - i); //Top Right
 
-                    SpawnAtPoint(objToSpawn, i, positions[i].Capacity - 1); //Bottom Left
-                    SpawnAtPoint(objToSpawn, positions.Capacity - 1 - i, positions[i].Capacity - 1); //Bottom Left
+                    SpawnAtPoint(objToSpawn, i, positions[i].Count - 1); //Bottom Left
+                    SpawnAtPoint(objToSpawn, positions.Count - 1 - i, positions[i].Count - 1); //Bottom Left
 
-                    SpawnAtPoint(objToSpawn, positions.Capacity - 1, i); //Bottom Right
-                    SpawnAtPoint(objToSpawn, positions.Capacity - 1, positions[i].Capacity - 1 - i); //Bottom Right
+                    SpawnAtPoint(objToSpawn, positions.Count - 1, i); //Bottom Right
+                    SpawnAtPoint(objToSpawn, positions.Count - 1, positions[i].Count - 1 - i); //Bottom Right
 
                 }
 
@@ -266,9 +267,9 @@ public class EnemySpawner : MonoBehaviour
                 }
 
                 SpawnAtPoint(objToSpawn, i, i); //Top Left
-                SpawnAtPoint(objToSpawn, positions.Capacity-i-1, i); //Top Right
-                SpawnAtPoint(objToSpawn, i, positions[i].Capacity - i -1); //Bottom Left
-                SpawnAtPoint(objToSpawn, positions.Capacity - i - 1, positions[i].Capacity - i - 1); //Bottom Right
+                SpawnAtPoint(objToSpawn, positions.Count - i - 1, i); //Top Right
+                SpawnAtPoint(objToSpawn, i, positions[i].Count - i - 1); //Bottom Left
+                SpawnAtPoint(objToSpawn, positions.Count - i - 1, positions[i].Count - i - 1); //Bottom Right
 
             }
         }
@@ -278,24 +279,25 @@ public class EnemySpawner : MonoBehaviour
     {
         if (positions.Capacity > 0)
         {
+            //Debug.Log("Attempting Spawning at X: " + x + ", " + y);
             SpawnAtPoint(obj, positions[x][y]);
         }
     }
 
     public void SpawnAtRandom(GameObject obj)
     {
-        if (positions.Capacity > 0)
+        if (positions.Count > 0)
         {
             SpawnAtPoint(obj, positions[GetRandomX()][GetRandomY()]);
         }
     }
     int GetRandomX()
     {
-        return Random.Range(0, positions.Capacity);
+        return Random.Range(0, positions.Count);
     }
     int GetRandomY()
     {
-        return Random.Range(0, positions[0].Capacity);
+        return Random.Range(0, positions[0].Count);
     }
 
     public void SpawnAtPoint(GameObject obj, Vector3 spawnPoint)
