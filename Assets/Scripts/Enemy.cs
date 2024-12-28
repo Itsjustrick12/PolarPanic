@@ -67,8 +67,8 @@ public class Enemy : MonoBehaviour
 
         //Flip Sprite of enemy towards the movement vector
         if ((state == EnemyState.MoveTowards || state == EnemyState.RunAway)
-            && (toPlayerX > 0 && !facingRight || ( toPlayerX < 0 && facingRight)))
-            {
+            && (toPlayerX > 0 && !facingRight || (toPlayerX < 0 && facingRight)))
+        {
             facingRight = !facingRight;
             Vector3 newScale = new Vector3 (transform.localScale.x*-1, transform.localScale.y, transform.localScale.z);
             transform.localScale = newScale;
