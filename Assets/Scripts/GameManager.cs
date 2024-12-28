@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject player;
 
+    public int nuts = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -18,4 +20,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    public void UpdateNuts(int amt)
+    {
+        nuts += amt;
+    }
 }

@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
     private bool facingRight = true;
 
     private Transform player;
+
+    [SerializeField] GameObject drop = null;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -118,7 +120,19 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("Enemy has died!");
+        SpawnPickup();
         Destroy(gameObject);
+    }
+
+    private void SpawnPickup()
+    {
+        GameObject newPickup = Instantiate(drop, transform);
+        GameObject temp = GameObject.Find("PickupsContainer");
+
+        if (temp != null)
+        {
+
+            newPickup.transform.parent = temp.transform;
+        }
     }
 }

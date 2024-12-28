@@ -58,8 +58,13 @@ public class EnemySpawner : MonoBehaviour
                 //test function to kill random enemy from those alive
                 if (enemies.Count > 0 && numAlive > 0)
                 {
-                    Destroy(enemies[0]);
-                    enemies.RemoveAt(0);
+                    GameObject temp = enemies[0];
+
+                    if (temp.GetComponent<Enemy>() != null)
+                    {
+                        temp.GetComponent<Enemy>().Die();
+                        enemies.RemoveAt(0);
+                    }
                     numAlive--;
                 }
 

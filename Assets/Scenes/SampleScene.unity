@@ -480,6 +480,8 @@ MonoBehaviour:
   magnetizedLayer:
     serializedVersion: 2
     m_Bits: 1792
+  neighborMagnets: []
+  magnetCollider: {fileID: 0}
 --- !u!50 &411769083
 Rigidbody2D:
   serializedVersion: 5
@@ -649,6 +651,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &516500446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 516500447}
+  m_Layer: 0
+  m_Name: PickupsContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &516500447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516500446}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8245227, y: 1.2560179, z: 0.016142445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1140,6 +1173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 612047084}
+  nuts: 0
 --- !u!4 &1031503550
 Transform:
   m_ObjectHideFlags: 0
@@ -13069,6 +13103,8 @@ MonoBehaviour:
   magnetizedLayer:
     serializedVersion: 2
     m_Bits: 1792
+  neighborMagnets: []
+  magnetCollider: {fileID: 0}
 --- !u!50 &1073309074
 Rigidbody2D:
   serializedVersion: 5
@@ -13507,6 +13543,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2233342640212133036, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5408514469421593940, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.02
@@ -13592,6 +13632,8 @@ MonoBehaviour:
   magnetizedLayer:
     serializedVersion: 2
     m_Bits: 1792
+  neighborMagnets: []
+  magnetCollider: {fileID: 0}
 --- !u!50 &1820123864
 Rigidbody2D:
   serializedVersion: 5
@@ -14074,6 +14116,8 @@ MonoBehaviour:
   magnetizedLayer:
     serializedVersion: 2
     m_Bits: 1792
+  neighborMagnets: []
+  magnetCollider: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -14088,3 +14132,4 @@ SceneRoots:
   - {fileID: 810455177}
   - {fileID: 1031503550}
   - {fileID: 1007210655}
+  - {fileID: 516500447}
