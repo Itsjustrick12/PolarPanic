@@ -15,8 +15,12 @@ public class ShieldController : MonoBehaviour
 
     private Transform pivot;
 
+    private MagnetizedObj magnetizedObj;
+
     void Start()
     {
+        magnetizedObj = GetComponent<MagnetizedObj>();
+        magnetizedObj.SetPolarity(polarity);
         pivot = pivotObj.transform;
         transform.parent = pivot;
         transform.position += Vector3.up * radius;
@@ -36,8 +40,7 @@ public class ShieldController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !broken)
         {
-            polarity *= -1;
-            spriteRenderer.color = polarity == 1 ? Color.red : Color.blue;
+            TogglePolarity();
         }
 
         // TODO debug keybinds
@@ -50,6 +53,14 @@ public class ShieldController : MonoBehaviour
         {
             Damage(1);
         }
+    }
+
+    //Hi Evan putting this here for ease of access for modifying the sheilds' polarity obj
+    private void TogglePolarity()
+    {
+        polarity *= -1;
+        spriteRenderer.color = polarity == 1 ? Color.red : Color.blue;
+        magnetizedObj.SetPolarity(polarity);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
