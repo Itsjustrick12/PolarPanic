@@ -18,14 +18,19 @@ public class Enemy : MonoBehaviour
     [SerializeField] float minDistance = 3f;
     [SerializeField] float shootRange = 5f;
     [SerializeField] float fireRate = 1f;
+
+    [SerializeField] float maxHealth = 3f;
+    private float currHealth = 0f;
+
     private Vector2 playerDirection;
     private EnemyState state;
 
     private Transform player;
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameManager.instance.player.transform;
+        currHealth = maxHealth;
     }
     // Update is called once per frame
     void Update()
@@ -70,5 +75,21 @@ public class Enemy : MonoBehaviour
                 rb.linearVelocity = playerDirection * moveSpeed;
                 break;
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currHealth -= damage;
+
+        if (currHealth < 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log("Enemy has died!");
+        Destroy(gameObject);
     }
 }
