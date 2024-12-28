@@ -156,6 +156,7 @@ MonoBehaviour:
   shootRange: 10
   fireRate: 2
   maxHealth: 3
+  drop: {fileID: 8695777369659470211, guid: 0859d0563dc2e32429c2762aabec568b, type: 3}
 --- !u!50 &1691007096230775661
 Rigidbody2D:
   serializedVersion: 5
