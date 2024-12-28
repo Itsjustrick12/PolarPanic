@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numToSpawn: 1
   type: 1
-  primary: {fileID: 3878776338464377130, guid: c8cbd4495bf094b48b3a7255d096c35a, type: 3}
-  secondary: {fileID: 3878776338464377130, guid: 3332594fce0430a4692a00176e0574d1, type: 3}
+  primary: {fileID: 2098869460540230953, guid: c242c4942e613cf48a675c8d1d5235cf, type: 3}
+  secondary: {fileID: 0}
   spacing: 0
