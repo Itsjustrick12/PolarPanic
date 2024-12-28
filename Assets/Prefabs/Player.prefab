@@ -253,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 972266833833322127, guid: b8a1c91bbb79134499f52b967073263b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2055329708438071099, guid: b8a1c91bbb79134499f52b967073263b, type: 3}
       propertyPath: m_Size.x
       value: 0.06
@@ -398,7 +402,6 @@ MonoBehaviour:
   polarity: 1
   rb: {fileID: 0}
   strength: 5
-  fieldRadius: 7.5
   isStatic: 1
   magnetizedLayer:
     serializedVersion: 2
