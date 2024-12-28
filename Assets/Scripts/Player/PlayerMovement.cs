@@ -1,5 +1,11 @@
 using UnityEngine;
 
+enum Direction
+{
+    LeftRight,
+    Up,
+    Down
+}
 public class PlayerMovement : MonoBehaviour
 {
     float moveX, moveY;
@@ -17,10 +23,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dodgerollCooldown = 0.3f;
     [SerializeField] private float dodgerollSpeedMultiplier = 1.3f;
     [SerializeField] private ShieldController shield;
+    [SerializeField] Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         dodgerollTime = float.PositiveInfinity;
@@ -31,6 +39,43 @@ public class PlayerMovement : MonoBehaviour
     {
         moveX = Input.GetAxisRaw("Horizontal");
         moveY = Input.GetAxisRaw("Vertical");
+
+        if (moveY > 0){
+            anim.SetBool("Up", true);
+            anim.SetBool("Down", false);
+            anim.SetBool("Left", false);
+            anim.SetBool("Right", false);
+        }
+        else if (moveY < 0)
+        {
+            anim.SetBool("Up", false);
+            anim.SetBool("Down", true);
+            anim.SetBool("Right", false);
+            anim.SetBool("Left", false);
+        }
+        else if (moveX == 0 && moveY == 0)
+        {
+            anim.SetBool("Up", false);
+            anim.SetBool("Down", false);
+            anim.SetBool("Left", false);
+            anim.SetBool("Right", false);
+        }
+        else if (moveX > 0)
+        {
+            anim.SetBool("Up", false);
+            anim.SetBool("Down", false);
+            anim.SetBool("Right", true);
+            anim.SetBool("Left", false);
+        }
+        else
+        {
+            anim.SetBool("Up", false);
+            anim.SetBool("Down", false);
+            anim.SetBool("Right", false);
+            anim.SetBool("Left", true);
+        }
+
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && !dodgeroll && !(moveX == 0 && moveY == 0))
         {
             dodgeroll = true;

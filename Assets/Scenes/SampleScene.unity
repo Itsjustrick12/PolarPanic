@@ -475,7 +475,6 @@ MonoBehaviour:
   polarity: -1
   rb: {fileID: 411769083}
   strength: 5
-  fieldRadius: 6
   isStatic: 0
   magnetizedLayer:
     serializedVersion: 2
@@ -13098,7 +13097,6 @@ MonoBehaviour:
   polarity: 1
   rb: {fileID: 1073309074}
   strength: 5
-  fieldRadius: 6
   isStatic: 0
   magnetizedLayer:
     serializedVersion: 2
@@ -13627,7 +13625,6 @@ MonoBehaviour:
   polarity: 1
   rb: {fileID: 1820123864}
   strength: 5
-  fieldRadius: 6
   isStatic: 0
   magnetizedLayer:
     serializedVersion: 2
@@ -14111,7 +14108,6 @@ MonoBehaviour:
   polarity: -1
   rb: {fileID: 3797821161562400080}
   strength: 5
-  fieldRadius: 6
   isStatic: 0
   magnetizedLayer:
     serializedVersion: 2
