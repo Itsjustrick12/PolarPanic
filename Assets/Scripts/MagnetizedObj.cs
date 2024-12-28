@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MagnetizedObj : MonoBehaviour
@@ -9,6 +10,8 @@ public class MagnetizedObj : MonoBehaviour
     [SerializeField] bool isStatic = false;
 
     [SerializeField] LayerMask magnetizedLayer;
+    [SerializeField] private List<MagnetizedObj> neighborMagnets = new();
+    [SerializeField] private Collider2D magnetCollider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -18,14 +21,40 @@ public class MagnetizedObj : MonoBehaviour
 
             rb = GetComponent<Rigidbody2D>();
         }
+
+        magnetCollider.isTrigger = true;
+        magnetCollider.includeLayers = magnetizedLayer;
+        magnetCollider.excludeLayers = ~magnetizedLayer;
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        MagnetizedObj tempObj = collision.GetComponent<MagnetizedObj>();
+        if(collision is not null && tempObj is not null && tempObj != this && !neighborMagnets.Contains(tempObj))
+        {
+            neighborMagnets.Add(tempObj);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        MagnetizedObj tempObj = collision.GetComponent<MagnetizedObj>();
+        if (tempObj is not null)
+        {
+            //If object is not in list, it returns false and doesn't care
+            neighborMagnets.Remove(tempObj);
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        CheckRadius();
+        //CheckRadius();
+        ApplyForceToNeighbors();
     }
 
+    /*
     public void CheckRadius()
     {
         //Find all the magnetized objects within the radius
@@ -40,6 +69,15 @@ public class MagnetizedObj : MonoBehaviour
             }
         }
     }
+    */
+
+    private void ApplyForceToNeighbors()
+    {
+        foreach(MagnetizedObj magnet in neighborMagnets)
+        {
+            ApplyForce(magnet);
+        }
+    }
 
     public void ApplyForce(MagnetizedObj otherObj)
     {
@@ -47,12 +85,13 @@ public class MagnetizedObj : MonoBehaviour
 
         float dist = DirectionToObj.magnitude;
 
-        if (dist <= fieldRadius)
+        if (!otherObj.isStatic)
         {
-            if (!otherObj.isStatic)
-            {
-                otherObj.rb.AddForce(DirectionToObj.normalized * strength * -DetermineSign(otherObj.GetPolarity()), ForceMode2D.Force);
-            }
+            //Squared falloff
+            //otherObj.rb.AddForce(-DetermineSign(otherObj.GetPolarity()) * strength * (DirectionToObj.normalized / DirectionToObj.sqrMagnitude), ForceMode2D.Force);
+
+            //Linear falloff
+            otherObj.rb.AddForce(-DetermineSign(otherObj.GetPolarity()) * strength * (DirectionToObj.normalized / DirectionToObj.magnitude), ForceMode2D.Force);
         }
     }
 
@@ -85,6 +124,7 @@ public class MagnetizedObj : MonoBehaviour
     }
 
     //Visual for determining appropriate magnetism range
+    /* We're using real colliders now, so this isn't necessary
     private void OnDrawGizmosSelected()
     {
         if ( polarity > 0)
@@ -101,4 +141,5 @@ public class MagnetizedObj : MonoBehaviour
 
         Gizmos.DrawWireSphere(transform.position, fieldRadius);
     }
+    */
 }
