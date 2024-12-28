@@ -97,9 +97,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 //Add new row for each position
                 positions.Add(new List<Vector3>());
-                for (int j = 24; j > 0; j--)
+                for (int j = (int)TL.y; j > (int)BR.y; j--)
                 {
-                    Vector3 newPoint = new Vector3(i, j-12, 0);
+                    Vector3 newPoint = new Vector3(i, j, 0);
 
                     //Add new vector 3
                     positions[i - (int)TL.x].Add(newPoint);

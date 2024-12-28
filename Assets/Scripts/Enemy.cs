@@ -18,12 +18,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] float minDistance = 3f;
     [SerializeField] float shootRange = 5f;
     [SerializeField] float fireRate = 1f;
+    private float shootCooldown = 0f;
 
     [SerializeField] float maxHealth = 3f;
     private float currHealth = 0f;
 
     private Vector2 playerDirection;
     private EnemyState state;
+
+    private bool facingRight = true;
 
     private Transform player;
     private void Awake()
@@ -32,11 +35,14 @@ public class Enemy : MonoBehaviour
         player = GameManager.instance.player.transform;
         currHealth = maxHealth;
     }
+
+
     // Update is called once per frame
     void Update()
     {
         Vector2 toPlayer = player.position - transform.position;
         playerDirection = toPlayer.normalized;
+
         
         if (toPlayer.magnitude <= minDistance)
         {
@@ -54,11 +60,27 @@ public class Enemy : MonoBehaviour
             //move towards player
             state = EnemyState.MoveTowards;
         }
+
+        float toPlayerX = toPlayer.x;
+
+        //Flip Sprite of enemy towards the movement vector
+        if ((state == EnemyState.MoveTowards || state == EnemyState.RunAway)
+            && (toPlayerX > 0 && !facingRight || ( toPlayerX < 0 && facingRight)))
+            {
+            facingRight = !facingRight;
+            Vector3 newScale = new Vector3 (transform.localScale.x*-1, transform.localScale.y, transform.localScale.z);
+            transform.localScale = newScale;
+        }
     }
 
     private void FixedUpdate()
     {
+        shootCooldown += Time.deltaTime;
         DetermineMovement();
+        if (shootCooldown >= fireRate && state == EnemyState.Hold)
+        {
+            ShootTowardsPlayer();
+        }
     }
 
     private void DetermineMovement()
@@ -75,6 +97,13 @@ public class Enemy : MonoBehaviour
                 rb.linearVelocity = playerDirection * moveSpeed;
                 break;
         }
+    }
+
+    //PLACE BULLET SPAWN HERE ONCE PREFAB IS MADE
+    public void ShootTowardsPlayer()
+    {
+        //Debug.Log("Enemy Shoots a Bullet");
+        shootCooldown = 0f;
     }
 
     public void TakeDamage(float damage)
