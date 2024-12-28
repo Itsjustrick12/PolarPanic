@@ -6,7 +6,7 @@ public class MagnetizedObj : MonoBehaviour
     [SerializeField] int polarity = 0;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float strength = 1.0f;
-    [SerializeField] float fieldRadius = 1.0f;
+    //[SerializeField] float fieldRadius = 1.0f;
     [SerializeField] bool isStatic = false;
 
     [SerializeField] LayerMask magnetizedLayer;
@@ -31,7 +31,7 @@ public class MagnetizedObj : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         MagnetizedObj tempObj = collision.GetComponent<MagnetizedObj>();
-        if(collision is not null && tempObj is not null && tempObj != this && !neighborMagnets.Contains(tempObj))
+        if(collision != null && tempObj != null && tempObj != this && !neighborMagnets.Contains(tempObj))
         {
             neighborMagnets.Add(tempObj);
         }
@@ -40,7 +40,7 @@ public class MagnetizedObj : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         MagnetizedObj tempObj = collision.GetComponent<MagnetizedObj>();
-        if (tempObj is not null)
+        if (tempObj != null)
         {
             //If object is not in list, it returns false and doesn't care
             neighborMagnets.Remove(tempObj);
@@ -83,7 +83,7 @@ public class MagnetizedObj : MonoBehaviour
     {
         Vector2 DirectionToObj = DetermineDirection(otherObj);
 
-        float dist = DirectionToObj.magnitude;
+        //float dist = DirectionToObj.magnitude;
 
         if (!otherObj.isStatic)
         {
