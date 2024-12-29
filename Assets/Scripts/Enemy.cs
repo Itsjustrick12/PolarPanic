@@ -36,8 +36,6 @@ public class Enemy : MonoBehaviour
     private Vector2 playerDirection;
     private EnemyState state;
 
-    private bool isDead = false;
-
     private bool facingRight = true;
 
     private Transform player;
@@ -46,14 +44,10 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GameManager.instance.player.transform;
         currHealth = maxHealth;
     }
 
-    private void Start()
-    {
-        
-        player = GameManager.instance.player.transform;
-    }
 
     // Update is called once per frame
     void Update()
@@ -129,20 +123,18 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (!isDead)
-        {
-            currHealth -= damage;
+        Debug.Log("Enemy Hit");
+        currHealth -= damage;
+        GetComponent<SimpleFlash>().Flash(1f, 3, true);
 
-            if (currHealth < 0)
-            {
-                Die();
-            }
+        if (currHealth < 0)
+        {
+            Die();
         }
     }
 
     public void Die()
     {
-        isDead = true;
         //Cancel all scheduled bullets bc the enemy died
         StopAllCoroutines();
         /*
@@ -153,8 +145,6 @@ public class Enemy : MonoBehaviour
         */
 
         SpawnPickup();
-
-        EnemySpawner.instance.KillEnemy(1);
         Destroy(gameObject);
     }
 
