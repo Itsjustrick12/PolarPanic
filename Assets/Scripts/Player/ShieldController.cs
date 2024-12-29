@@ -38,9 +38,27 @@ public class ShieldController : MonoBehaviour
         pivot.position = pivotObj.transform.position;
         pivot.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
-        if (Input.GetMouseButtonDown(0) && !broken)
+        bool _positive = Input.GetMouseButton(0);
+        bool _negative = Input.GetMouseButton(1);
+
+        int _newPolarity = 0;
+        //Neutral polarity
+        if ((_positive && _negative) || !(_positive || _negative))
         {
-            TogglePolarity();
+            _newPolarity = 0;
+        }
+        else if (_positive)
+        {
+            _newPolarity = 1;
+        }
+        else
+        {
+            _newPolarity = -1;
+        }
+
+        if(_newPolarity != polarity)
+        {
+            SetPolarity(_newPolarity);
         }
 
         // TODO debug keybinds
@@ -55,6 +73,27 @@ public class ShieldController : MonoBehaviour
         }
     }
 
+    private void SetPolarity(int _polarity)
+    {
+        Color _newColor = Color.magenta;
+        switch (_polarity)
+        {
+            case -1:
+                _newColor = Color.blue;
+                break;
+            case 0:
+                _newColor = Color.gray;
+                break;
+            case 1:
+                _newColor = Color.red;
+                break;
+        }
+
+        polarity = _polarity;
+        spriteRenderer.color = _newColor;
+        magnetizedObj.SetPolarity(polarity);
+    }
+
     //Hi Evan putting this here for ease of access for modifying the sheilds' polarity obj
     private void TogglePolarity()
     {
@@ -67,6 +106,7 @@ public class ShieldController : MonoBehaviour
     {
         if (other.gameObject.layer == 9 && !broken) // bullet layer
         {
+
             //Debug.Log("TODO repel bullet if polarities are equal");
         }
     }
@@ -75,6 +115,19 @@ public class ShieldController : MonoBehaviour
     {
         if (other.gameObject.layer == 9 && !broken) // bullet layer
         {
+            if(TryGetComponent(out Bullet _hitBullet))
+            {
+                if(polarity == -_hitBullet.magnet.GetPolarity())
+                {
+                    //Opposite polarities, stick!
+                }
+                else
+                {
+                    //Same or neutral polarities, bounce!
+                    _hitBullet.rb.linearVelocity = new Vector3(_hitBullet.rb.linearVelocity.x, _hitBullet.rb.linearVelocity.y, 0f) - 2f * Vector3.Dot(_hitBullet.rb.linearVelocity, transform.up) * transform.up;
+                }
+            }
+
             Damage(1); // technically we could make some bullets do greater damage here, hmm
         }
     }
