@@ -117,12 +117,12 @@ SpriteRenderer:
   m_SortingLayerID: 562610345
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: -6265320276793015901, guid: b6f22dd43d810604d96f1bef1f9399da, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b712f02c882f314f9a737a1c39ba4e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.875, y: 0.875}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -171,8 +171,9 @@ MonoBehaviour:
   magnet: {fileID: 1729918457786825786}
   sprite: {fileID: 0}
   damage: 1
-  blue: {fileID: -6265320276793015901, guid: b6f22dd43d810604d96f1bef1f9399da, type: 3}
-  red: {fileID: -2874883796424843640, guid: 4f66a14d734eaf947b88c9a3f36ad268, type: 3}
+  reflected: 0
+  blue: {fileID: 21300000, guid: 1b712f02c882f314f9a737a1c39ba4e9, type: 3}
+  red: {fileID: 21300000, guid: ffabebb62f30f274496c992258b49f10, type: 3}
   white: {fileID: -5425667810362541478, guid: c813258f91aea8746a7d3b0d5bc63eac, type: 3}
 --- !u!114 &1729918457786825786
 MonoBehaviour:
