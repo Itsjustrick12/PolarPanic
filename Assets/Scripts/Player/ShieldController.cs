@@ -8,9 +8,6 @@ public class ShieldController : MonoBehaviour
     public GameObject pivotObj;
     public float radius;
     public int polarity = 1;
-    public int health = 5;
-    public int maxHealth = 5;
-    public bool broken = false;
     [SerializeField] private Collider2D shieldCollider, magnetCollider;
 
     private Transform pivot;
@@ -25,8 +22,6 @@ public class ShieldController : MonoBehaviour
         transform.parent = pivot;
         transform.position += Vector3.up * radius;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        health = maxHealth;
-        broken = false;
     }
 
     void Update()
@@ -60,17 +55,6 @@ public class ShieldController : MonoBehaviour
         {
             SetPolarity(_newPolarity);
         }
-
-        // TODO debug keybinds
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Heal(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Damage(1);
-        }
     }
 
     private void SetPolarity(int _polarity)
@@ -102,18 +86,9 @@ public class ShieldController : MonoBehaviour
         magnetizedObj.SetPolarity(polarity);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 9 && !broken) // bullet layer
-        {
-
-            //Debug.Log("TODO repel bullet if polarities are equal");
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == 9 && !broken) // bullet layer
+        if (other.gameObject.layer == 9) // bullet layer
         {
             if(TryGetComponent(out Bullet _hitBullet))
             {
@@ -132,52 +107,10 @@ public class ShieldController : MonoBehaviour
         }
     }
 
-    private void Damage(int amount)
-    {
-        if (broken) return;
-        health = Math.Max(health - amount, 0);
-        if (health <= 0)
-        {
-            Break();
-        }
-    }
-
-    private void Heal(int amount)
-    {
-        health = Math.Min(health + amount, maxHealth);
-        if (health > 0 && broken)
-        {
-            Restore();
-        }
-    }
-
-    private void Break()
-    {
-        broken = true;
-        spriteRenderer.enabled = false;
-        magnetCollider.enabled = false;
-        shieldCollider.enabled = false;
-        // TODO particle system, sounds, etc.
-    }
-
-    private void Restore()
-    {
-        broken = false;
-        if (!PlayerMovement.dodgeroll)
-        {
-            spriteRenderer.enabled = true;
-            magnetCollider.enabled = true;
-            shieldCollider.enabled = true;
-        }       
-    }
-
     public void SetActive(bool active)
     {
-        if (!broken)
-        {
-            spriteRenderer.enabled = active;
-            magnetCollider.enabled = active;
-            shieldCollider.enabled = active;
-        }
+        spriteRenderer.enabled = active;
+        magnetCollider.enabled = active;
+        shieldCollider.enabled = active;
     }
 }
