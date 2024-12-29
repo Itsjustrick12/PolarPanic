@@ -103,7 +103,7 @@ public class ShieldController : MonoBehaviour
                 }
             }
 
-            Damage(1); // technically we could make some bullets do greater damage here, hmm
+            //Damage(1); // technically we could make some bullets do greater damage here, hmm
         }
     }
 
