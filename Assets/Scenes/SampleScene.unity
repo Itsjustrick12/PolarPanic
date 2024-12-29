@@ -702,6 +702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb5692d30b4d1542a2be397538204d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 612047084}
+  nuts: 0
 --- !u!4 &1031503550
 Transform:
   m_ObjectHideFlags: 0
@@ -13001,7 +13003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7358318434842266073, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: strength
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7466939474139752589, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_IsActive
