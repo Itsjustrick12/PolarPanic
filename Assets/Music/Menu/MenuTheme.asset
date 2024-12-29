@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MenuTheme
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: feda2fdf859e1984fb9db9320cdd4e08, type: 3}
-  BPM: 120
+  BPM: 142
   timeSignature: 4
   timeSignatureBottom: 4
-  barsLength: 64
+  barsLength: 96
   area: 1
