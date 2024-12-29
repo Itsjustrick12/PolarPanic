@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float bulletSpeed = 1f;
     [SerializeField] public int bulletPolarity = 1;
     private float shootCooldown = 0f;
-    public float aimTime = 0.5f;
+    [SerializeField] Transform shotSpawnPoint;
 
     [SerializeField] AttackPattern attackPattern = null;
     private int attackPatternPos = 0;
@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
         //Debug.Log("Enemy Shoots a Bullet");
         while(shootCooldown <= 0f)
         {
-            shootCooldown = attackPattern.FireAttackPattern(ref attackPatternPos, this, transform, bulletSpeed, bulletPolarity);
+            shootCooldown = attackPattern.FireAttackPattern(ref attackPatternPos, this, shotSpawnPoint, bulletSpeed, bulletPolarity);
         }
     }
 

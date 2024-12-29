@@ -111,6 +111,10 @@ public class MagnetizedObj : MonoBehaviour
     private int DetermineSign(int otherPolarity)
     {
         int result = polarity * otherPolarity;
+        if(result > 0)
+        {
+            result *= 2;
+        }
         return result;
     }
 
