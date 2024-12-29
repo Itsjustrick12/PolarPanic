@@ -122,6 +122,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log("Enemy Hit");
         currHealth -= damage;
 
         if (currHealth < 0)

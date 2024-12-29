@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rb;
     public MagnetizedObj magnet;
+    public float damage = 1f;
 
     private void Awake()
     {
@@ -21,15 +22,25 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.collider.CompareTag("Player"))
+        {
+            PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+            if (player != null)
+            {
+                player.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
     }
 }

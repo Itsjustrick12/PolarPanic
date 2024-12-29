@@ -67,7 +67,7 @@ public class ShieldController : MonoBehaviour
     {
         if (other.gameObject.layer == 9 && !broken) // bullet layer
         {
-            Debug.Log("TODO repel bullet if polarities are equal");
+            //Debug.Log("TODO repel bullet if polarities are equal");
         }
     }
 
