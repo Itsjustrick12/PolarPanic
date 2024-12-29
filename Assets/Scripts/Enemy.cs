@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour
 
     private Transform player;
 
+    private bool isDead = false;
+
     [SerializeField] GameObject drop = null;
     private void Awake()
     {
@@ -123,18 +125,22 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Enemy Hit");
-        currHealth -= damage;
-        GetComponent<SimpleFlash>().Flash(1f, 3, true);
+        if (!isDead){
 
-        if (currHealth < 0)
-        {
-            Die();
+            Debug.Log("Enemy Hit");
+            currHealth -= damage;
+            GetComponent<SimpleFlash>().Flash(1f, 3, true);
+
+            if (currHealth < 0)
+            {
+                Die();
+            }
         }
     }
 
     public void Die()
     {
+        isDead = true;
         //Cancel all scheduled bullets bc the enemy died
         StopAllCoroutines();
         /*
@@ -143,7 +149,7 @@ public class Enemy : MonoBehaviour
             StopCoroutine(_coroutine);
         }
         */
-
+        EnemySpawner.instance.KillEnemy(1);
         SpawnPickup();
         Destroy(gameObject);
     }
