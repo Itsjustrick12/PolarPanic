@@ -81,7 +81,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Hello!!! " + collision.gameObject);
         if (collision.gameObject.layer == 11)
         {
             DestroyBullet();
