@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ed1915e907abd48bfef0636aca68ee, type: 3}
+  m_Name: TestAttackPattern
+  m_EditorClassIdentifier: 
+  attackPattern:
+  - pattern: {fileID: 11400000, guid: 4174112c6f834dd4e80e27f9d9382fec, type: 2}
+    cooldown: 0
+  - pattern: {fileID: 11400000, guid: a88ab89026666b8408233f68f9cd698b, type: 2}
+    cooldown: 1
+  randomOrder: 0
+  guaranteeNoRepeats: 1

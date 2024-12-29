@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a993cf5d20b72e46a69c57870995c76, type: 3}
-  m_Name: StaticRange
+  m_Name: SixtyDegreeSplit
   m_EditorClassIdentifier: 
-  patternBullet: {fileID: 7340907695961219310, guid: 59f01917eda22cb4bae95f054426ee41, type: 3}
-  numBullets: 5
-  range: 70
+  patternBullet: {fileID: 0}
+  numBullets: 2
+  range: 60
   rotOffset: 0
   posOffset: 1
   randomSpread: 0
