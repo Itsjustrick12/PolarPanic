@@ -15,6 +15,10 @@ public class Bullet : MonoBehaviour
     public Sprite red;
     public Sprite white;
 
+    [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] public Gradient redTrail;
+    [SerializeField] public Gradient blueTrail;
+
     private void Awake()
     {
         if(rb == null)
@@ -38,17 +42,20 @@ public class Bullet : MonoBehaviour
     {
         if (polarity == 0)
         {
-            //Set blue
+            //Set white
             sprite.sprite = white;
         }
         if (polarity > 0)
         {
             //Set red
             sprite.sprite = red;
+            trailRenderer.colorGradient = redTrail;
         }
         else
         {
+            //Set blue
             sprite.sprite = blue;
+            trailRenderer.colorGradient = blueTrail;
         }
 
         magnet.SetPolarity(polarity);

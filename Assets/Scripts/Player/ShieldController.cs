@@ -10,6 +10,7 @@ public class ShieldController : MonoBehaviour
     public int polarity = 1;
     [SerializeField] private Collider2D shieldCollider, magnetCollider;
     [SerializeField] float bounceForce = 1.2f;
+    [SerializeField] ShieldCatcher shieldCatcher;
 
     private Transform pivot;
 
