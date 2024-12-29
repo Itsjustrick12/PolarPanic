@@ -30,6 +30,11 @@ public class Enemy : MonoBehaviour
     private int attackPatternPos = 0;
     //public List<Coroutine> activeBulletCoroutines = new();
 
+    [SerializeField] SpriteRenderer screenSprite = null;
+    [SerializeField] Sprite red;
+    [SerializeField] Sprite blue;
+    [SerializeField] Sprite white;
+
     [SerializeField] float maxHealth = 3f;
     private float currHealth = 0f;
 
@@ -45,6 +50,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject drop = null;
     private void Awake()
     {
+        SetPolarity(bulletPolarity);
         rb = GetComponent<Rigidbody2D>();
         player = GameManager.instance.player.transform;
         currHealth = maxHealth;
@@ -152,6 +158,25 @@ public class Enemy : MonoBehaviour
         EnemySpawner.instance.KillEnemy(1);
         SpawnPickup();
         Destroy(gameObject);
+    }
+
+    public void SetPolarity(int polarity)
+    {
+        bulletPolarity = polarity;
+
+        if (polarity == 0)
+        {
+            screenSprite.sprite = white;
+        }
+        else if (polarity > 0)
+        {
+            //Set Red
+            screenSprite.sprite = red;
+        }
+        else
+        {
+            screenSprite.sprite = blue;
+        }
     }
 
     private void SpawnPickup()

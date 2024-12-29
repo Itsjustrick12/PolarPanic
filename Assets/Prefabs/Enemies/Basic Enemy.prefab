@@ -161,6 +161,10 @@ MonoBehaviour:
   bulletPolarity: 1
   shotSpawnPoint: {fileID: 3895987568843787076}
   attackPattern: {fileID: 11400000, guid: 9a43c0bfd61e1a64096ca820eac40fe0, type: 2}
+  screenSprite: {fileID: 21830308125414180}
+  red: {fileID: 5156814850014174755, guid: 9be82b60e31640f4b8fa9cdab1da576b, type: 3}
+  blue: {fileID: 1356265042483427029, guid: 9be82b60e31640f4b8fa9cdab1da576b, type: 3}
+  white: {fileID: -3174391233492567891, guid: 9be82b60e31640f4b8fa9cdab1da576b, type: 3}
   maxHealth: 3
   drop: {fileID: 8695777369659470211, guid: 0859d0563dc2e32429c2762aabec568b, type: 3}
 --- !u!50 &1691007096230775661
