@@ -35,10 +35,10 @@ public class EnemySpawner : MonoBehaviour
     //Used for determining the spawning of enemies
     [SerializeField] SpawnerState currState = SpawnerState.COOLDOWN;
     [SerializeField] float waveDelay = 5f;
-    public float timer = 0f;
+    private float timer = 0f;
 
     [SerializeField] WavePattern[] patterns;
-    public int currPat = 0;
+    private int currPat = 0;
 
     [SerializeField] bool on = false;
 
