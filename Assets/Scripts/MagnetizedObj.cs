@@ -51,6 +51,7 @@ public class MagnetizedObj : MonoBehaviour
     void FixedUpdate()
     {
         //CheckRadius();
+
         ApplyForceToNeighbors();
     }
 
@@ -92,7 +93,7 @@ public class MagnetizedObj : MonoBehaviour
             {
                 //Squared falloff
                 //otherObj.rb.AddForce(-DetermineSign(otherObj.GetPolarity()) * strength * (DirectionToObj.normalized / DirectionToObj.sqrMagnitude), ForceMode2D.Force);
-
+                
                 //Linear falloff
                 otherObj.rb.AddForce(-DetermineSign(otherObj.GetPolarity()) * strength * (DirectionToObj.normalized / DirectionToObj.magnitude), ForceMode2D.Force);
             }
@@ -111,10 +112,6 @@ public class MagnetizedObj : MonoBehaviour
     private int DetermineSign(int otherPolarity)
     {
         int result = polarity * otherPolarity;
-        if(result > 0)
-        {
-            result *= 2;
-        }
         return result;
     }
 

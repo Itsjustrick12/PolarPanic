@@ -7545,6 +7545,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5eab635c7b3b9644b89c9a71c325ab98, type: 2}
   - {fileID: 11400000, guid: 8f110b69082ff03408ba595f4f3c6371, type: 2}
   on: 1
+  endless: 1
 --- !u!4 &1614095348
 Transform:
   m_ObjectHideFlags: 0
@@ -7691,6 +7692,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5408514469421593940, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898849143292767880, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: polarity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898849143292767880, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
