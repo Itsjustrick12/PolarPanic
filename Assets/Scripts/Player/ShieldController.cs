@@ -101,7 +101,10 @@ public class ShieldController : MonoBehaviour
                 else
                 {
                     //Same or neutral polarities, bounce!
-                    _hitBullet.rb.linearVelocity = bounceForce * (new Vector3(_hitBullet.rb.linearVelocity.x, _hitBullet.rb.linearVelocity.y, 0f) - 2f * Vector3.Dot(_hitBullet.rb.linearVelocity, transform.right) * transform.right);
+                    if(Vector3.Dot(_hitBullet.rb.linearVelocity, transform.right) <= 0)
+                    {
+                        _hitBullet.rb.linearVelocity = bounceForce * (new Vector3(_hitBullet.rb.linearVelocity.x, _hitBullet.rb.linearVelocity.y, 0f) - 2f * Vector3.Dot(_hitBullet.rb.linearVelocity, transform.right) * transform.right);
+                    }
                 }
             }
 
