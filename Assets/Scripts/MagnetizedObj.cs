@@ -12,6 +12,8 @@ public class MagnetizedObj : MonoBehaviour
     [SerializeField] LayerMask magnetizedLayer;
     [SerializeField] private List<MagnetizedObj> neighborMagnets = new();
     [SerializeField] private Collider2D magnetCollider;
+    public delegate void DestroyNotification(MagnetizedObj _destroyedMagnet);
+    public DestroyNotification OnDestroy;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -33,6 +35,7 @@ public class MagnetizedObj : MonoBehaviour
         MagnetizedObj tempObj = collision.GetComponent<MagnetizedObj>();
         if(collision != null && tempObj != null && tempObj != this && !neighborMagnets.Contains(tempObj))
         {
+            tempObj.OnDestroy += RemoveMagnetFromNeighborsOnDestroy;
             neighborMagnets.Add(tempObj);
         }
     }
@@ -40,11 +43,17 @@ public class MagnetizedObj : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         MagnetizedObj tempObj = collision.GetComponent<MagnetizedObj>();
-        if (tempObj != null)
+        if (tempObj != null && neighborMagnets.Contains(tempObj))
         {
-            //If object is not in list, it returns false and doesn't care
+            tempObj.OnDestroy -= RemoveMagnetFromNeighborsOnDestroy;
             neighborMagnets.Remove(tempObj);
         }
+    }
+
+    public void RemoveMagnetFromNeighborsOnDestroy(MagnetizedObj _destroyedMagnet)
+    {
+        Debug.Log($"{gameObject.name} {_destroyedMagnet.name}");
+        neighborMagnets.Remove(_destroyedMagnet);
     }
 
     // Update is called once per frame

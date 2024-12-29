@@ -523,7 +523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &592063722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7656,6 +7656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: bounceForce
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5408514469421593940, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.02
@@ -7698,9 +7702,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6898849143292767880, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: polarity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6898849143292767880, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8178215634274057646, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}

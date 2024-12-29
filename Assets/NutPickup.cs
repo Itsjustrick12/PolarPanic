@@ -3,6 +3,7 @@ using UnityEngine;
 public class NutPickup : MonoBehaviour
 {
     public int value = 1;
+    [SerializeField] MagnetizedObj magnet;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -10,7 +11,13 @@ public class NutPickup : MonoBehaviour
         if (collision.gameObject.CompareTag("PickupPoint"))
         {
             GameManager.instance.UpdateNuts(value);
-            Destroy(gameObject);
+            DestroyPickup();
         }
+    }
+
+    public void DestroyPickup()
+    {
+        magnet.OnDestroy?.Invoke(magnet);
+        Destroy(gameObject);
     }
 }

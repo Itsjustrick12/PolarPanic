@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
+  magnet: {fileID: 6824772691611306367}
 --- !u!212 &3968314245432269668
 SpriteRenderer:
   m_ObjectHideFlags: 0

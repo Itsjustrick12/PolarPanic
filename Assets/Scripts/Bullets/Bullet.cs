@@ -61,7 +61,7 @@ public class Bullet : MonoBehaviour
             if (player != null)
             {
                 player.TakeDamage(damage);
-                Destroy(gameObject);
+                DestroyBullet();
             }
         }
         if (collision.gameObject.CompareTag("Enemy"))
@@ -70,12 +70,18 @@ public class Bullet : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
-                Destroy(gameObject);
+                DestroyBullet();
             }
         }
         if (collision.collider.CompareTag("Wall"))
         {
-            Destroy(gameObject);
+            DestroyBullet();
         }
+    }
+
+    public void DestroyBullet()
+    {
+        magnet.OnDestroy?.Invoke(magnet);
+        Destroy(gameObject);
     }
 }
