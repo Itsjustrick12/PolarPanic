@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float bulletSpeed = 1f;
     [SerializeField] public int bulletPolarity = 1;
     private float shootCooldown = 0f;
+    public float aimTime = 0.5f;
 
     [SerializeField] AttackPattern attackPattern = null;
     private int attackPatternPos = 0;
