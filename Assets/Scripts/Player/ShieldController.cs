@@ -9,6 +9,7 @@ public class ShieldController : MonoBehaviour
     public float radius;
     public int polarity = 1;
     [SerializeField] private Collider2D shieldCollider, magnetCollider;
+    [SerializeField] float bounceForce = 1.2f;
 
     private Transform pivot;
 
@@ -90,7 +91,7 @@ public class ShieldController : MonoBehaviour
     {
         if (other.gameObject.layer == 9) // bullet layer
         {
-            if(TryGetComponent(out Bullet _hitBullet))
+            if (other.gameObject.TryGetComponent(out Bullet _hitBullet))
             {
                 if(polarity == -_hitBullet.magnet.GetPolarity())
                 {
@@ -99,7 +100,7 @@ public class ShieldController : MonoBehaviour
                 else
                 {
                     //Same or neutral polarities, bounce!
-                    _hitBullet.rb.linearVelocity = new Vector3(_hitBullet.rb.linearVelocity.x, _hitBullet.rb.linearVelocity.y, 0f) - 2f * Vector3.Dot(_hitBullet.rb.linearVelocity, transform.up) * transform.up;
+                    _hitBullet.rb.linearVelocity = bounceForce * (new Vector3(_hitBullet.rb.linearVelocity.x, _hitBullet.rb.linearVelocity.y, 0f) - 2f * Vector3.Dot(_hitBullet.rb.linearVelocity, transform.right) * transform.right);
                 }
             }
 
