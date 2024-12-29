@@ -35,13 +35,27 @@ public class EnemySpawner : MonoBehaviour
     //Used for determining the spawning of enemies
     [SerializeField] SpawnerState currState = SpawnerState.COOLDOWN;
     [SerializeField] float waveDelay = 5f;
-    private float timer = 0f;
+    public float timer = 0f;
 
     [SerializeField] WavePattern[] patterns;
     private int currPat = 0;
 
+    public static EnemySpawner instance;
+
     [SerializeField] bool on = false;
     [SerializeField] bool endless = true;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -121,8 +135,6 @@ public class EnemySpawner : MonoBehaviour
         Vector3 TL = topLeft.position;
         Vector3 BR = bottomRight.position;
 
-        //Debug.Log((int)BR.x - (int)TL.x);
-
             for (int i = (int)TL.x; i < (int)BR.x; i++)
             {
                 //Add new row for each position
@@ -133,12 +145,8 @@ public class EnemySpawner : MonoBehaviour
 
                     //Add new vector 3
                     positions[i - (int)TL.x].Add(newPoint);
-                    //Debug.Log("Created Position Point at: (" + (i - (int)TL.x) + ", " + j + ")");
                 }
             }
-        
-
-        //Debug.Log("Capacity" + positions.Count);
     }
 
     public void GeneratePattern()
@@ -346,6 +354,11 @@ public class EnemySpawner : MonoBehaviour
         
         enemies.Add(temp);
         numAlive++;
+    }
+
+    public void KillEnemy(int amt)
+    {
+        numAlive-=amt;
     }
 
 }

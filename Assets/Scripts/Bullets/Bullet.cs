@@ -6,7 +6,13 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rb;
     public MagnetizedObj magnet;
+    public SpriteRenderer sprite;
     public float damage = 1f;
+    bool reflected = false;
+
+    public Sprite blue;
+    public Sprite red;
+    public Sprite white;
 
     private void Awake()
     {
@@ -20,6 +26,31 @@ public class Bullet : MonoBehaviour
         {
             magnet = GetComponent<MagnetizedObj>();
         }
+        if (sprite == null)
+        {
+            sprite = GetComponent<SpriteRenderer>();
+        }
+        SetPolarity(magnet.GetPolarity());
+    }
+
+    public void SetPolarity(int polarity)
+    {
+        if (polarity == 0)
+        {
+            //Set blue
+            sprite.sprite = white;
+        }
+        if (polarity > 0)
+        {
+            //Set red
+            sprite.sprite = red;
+        }
+        else
+        {
+            sprite.sprite = blue;
+        }
+
+        magnet.SetPolarity(polarity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

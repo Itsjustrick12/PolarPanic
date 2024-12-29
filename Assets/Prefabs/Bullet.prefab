@@ -169,7 +169,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8912745903537175874}
   magnet: {fileID: 1729918457786825786}
+  sprite: {fileID: 0}
   damage: 1
+  blue: {fileID: 21300000, guid: 8d554386d007e1e4989841a84b80cb12, type: 3}
+  red: {fileID: 21300000, guid: 07e1ab9e13b403e47b938591b96dff89, type: 3}
+  white: {fileID: 21300000, guid: 5218ee22887dd1448ac381a6180f4c3b, type: 3}
 --- !u!114 &1729918457786825786
 MonoBehaviour:
   m_ObjectHideFlags: 0

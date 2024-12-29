@@ -10,6 +10,6 @@ public abstract class BulletPattern : ScriptableObject
     {
         Bullet _newBullet = Instantiate(patternBullet, _spawnPos, Quaternion.identity);
         _newBullet.rb.linearVelocity = _newBulletDir * _initialForce;
-        _newBullet.magnet.SetPolarity(_polarity);
+        _newBullet.SetPolarity(_polarity);
     }
 }
