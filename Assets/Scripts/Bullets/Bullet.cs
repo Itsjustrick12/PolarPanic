@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public MagnetizedObj magnet;
     public SpriteRenderer sprite;
     public float damage = 1f;
-    bool reflected = false;
+    public bool reflected = false;
 
     public Sprite blue;
     public Sprite red;
@@ -64,7 +64,7 @@ public class Bullet : MonoBehaviour
                 DestroyBullet();
             }
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && reflected)
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (enemy != null)
