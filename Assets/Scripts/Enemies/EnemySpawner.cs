@@ -1,13 +1,21 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.InputSystem;
 enum SpawnerState
 {
     SPAWNING,
     COOLDOWN,
     READY,
     STOPPED
+}
+public enum Difficulty
+{
+    Easy,
+    Medium,
+    Hard
 }
 public class EnemySpawner : MonoBehaviour
 {
@@ -39,10 +47,20 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] WavePattern[] patterns;
 
-    //
+    //For Endless
     public GameObject[] basicEnemies;
+    public GameObject[] advancedEnemies;
+
+    [SerializeField] Difficulty currDifficulty = Difficulty.Easy;
+    //Determines what wave number to increase difficulty to medium
+    public int waveForMedium = 5;
+    //Determine what wave number to increase to hard
+    public int waveForHard = 10;
 
     private int currPat = 0;
+
+    //endless
+    public int wavesSpawned = 0;
 
     public static EnemySpawner instance;
 
@@ -75,22 +93,6 @@ public class EnemySpawner : MonoBehaviour
     {
         if (on)
         {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                //test function to kill random enemy from those alive
-                if (enemies.Count > 0 && numAlive > 0)
-                {
-                    GameObject temp = enemies[0];
-
-                    if (temp.GetComponent<Enemy>() != null)
-                    {
-                        temp.GetComponent<Enemy>().Die();
-                        enemies.RemoveAt(0);
-                    }
-                    numAlive--;
-                }
-
-            }
 
             //Enter state to spawn next wave
             if ((numAlive == 0 && currState == SpawnerState.READY) && timer > waveDelay)
@@ -101,7 +103,11 @@ public class EnemySpawner : MonoBehaviour
 
                 if (currPat + 1 > patterns.Length - 1)
                 {
-                    currState = SpawnerState.STOPPED;
+                    if (!endless)
+                    {
+
+                        currState = SpawnerState.STOPPED;
+                    }
 
                 }
                 else
@@ -110,6 +116,21 @@ public class EnemySpawner : MonoBehaviour
                     timer = 0f;
                     currState = SpawnerState.COOLDOWN;
                     currPat++;
+                }
+
+                if (endless)
+                {
+                    currPat--;
+                    wavesSpawned++;
+                    if (wavesSpawned >= waveForHard)
+                    {
+                        currDifficulty = Difficulty.Hard;
+                    }
+                    else if (wavesSpawned >= waveForMedium)
+                    {
+                        currDifficulty = Difficulty.Medium;
+                    }
+                    patterns[currPat] = GeneratePattern();
                 }
 
             }
@@ -139,23 +160,142 @@ public class EnemySpawner : MonoBehaviour
         Vector3 TL = topLeft.position;
         Vector3 BR = bottomRight.position;
 
-            for (int i = (int)TL.x; i < (int)BR.x; i++)
+        for (int i = (int)TL.x; i < (int)BR.x; i++)
+        {
+            //Add new row for each position
+            positions.Add(new List<Vector3>());
+            for (int j = (int)TL.y; j > (int)BR.y; j--)
             {
-                //Add new row for each position
-                positions.Add(new List<Vector3>());
-                for (int j = (int)TL.y; j > (int)BR.y; j--)
-                {
-                    Vector3 newPoint = new Vector3(i, j, 0);
+                Vector3 newPoint = new Vector3(i, j, 0);
 
-                    //Add new vector 3
-                    positions[i - (int)TL.x].Add(newPoint);
-                }
+                //Add new vector 3
+                positions[i - (int)TL.x].Add(newPoint);
             }
+        }
     }
 
-    public void GeneratePattern()
+    public WavePattern GeneratePattern()
     {
+        WaveType type = WaveType.Random;
 
+        int amt = 1;
+
+        int randomPattern;
+
+        bool includeSpacing = false;
+
+        if (Random.Range(0,3) == 2)
+        {
+            includeSpacing = true;
+        }
+
+        //Pick Random Primary and Secondary from the set supplied
+        GameObject randomPrimary;
+        GameObject randomSecondary;
+
+        randomPattern = Random.Range(0, 4);
+        switch (randomPattern)
+        {
+            case 0:
+
+                type = WaveType.CornerLine;
+                if (currDifficulty != Difficulty.Easy)
+                {
+                    if (currDifficulty == Difficulty.Medium)
+                    {
+                        amt = 2;
+                    }
+                    else if (currDifficulty == Difficulty.Hard){
+                        amt = 3;
+                    }
+
+                    if (includeSpacing)
+                    {
+                        amt++;
+                    }
+                }
+
+                break;
+            case 1:
+
+                type = WaveType.Random;
+                if (currDifficulty == Difficulty.Easy)
+                {
+                    amt = 4;
+                }
+                else if (currDifficulty == Difficulty.Medium)
+                {
+                    amt = Random.Range(5, 8);
+                }
+                else
+                {
+                    amt = Random.Range(8, 13);
+                }
+
+                break;
+            case 2:
+
+                type = WaveType.Corners;;
+                if (currDifficulty != Difficulty.Easy)
+                {
+                    if (currDifficulty == Difficulty.Medium)
+                    {
+                        amt = 2;
+                    }
+                    else if (currDifficulty == Difficulty.Hard)
+                    {
+                        amt = 3;
+                    }
+
+                    if (includeSpacing)
+                    {
+                        amt++;
+                    }
+                }
+
+                break;
+            case 3:
+                type = WaveType.Middle;
+                if (currDifficulty != Difficulty.Easy)
+                {
+                    amt = 2;
+                }
+                break;
+            default:
+                break;
+        }
+
+        if (currDifficulty == Difficulty.Easy)
+        {
+            randomPrimary = PickRandomEnemy(true);
+            randomSecondary = PickRandomEnemy(true);
+        }
+        else if (currDifficulty == Difficulty.Medium)
+        {
+            randomPrimary = PickRandomEnemy(false);
+            randomSecondary = PickRandomEnemy(true);
+        }
+        else
+        {
+            randomPrimary = PickRandomEnemy(false);
+            randomSecondary = PickRandomEnemy(false);
+        }
+
+
+        WavePattern newPattern = ScriptableObject.CreateInstance<WavePattern>();
+        newPattern = new WavePattern(type, amt, randomPrimary, randomSecondary, includeSpacing);
+        return newPattern;
+
+        
+    }
+
+    private GameObject PickRandomEnemy(bool basic)
+    {
+        if (!basic && advancedEnemies.Length > 0)
+        {
+            return advancedEnemies[Random.Range(0, advancedEnemies.Length)];
+        }
+        return basicEnemies[Random.Range(0, basicEnemies.Length)];
     }
 
     public void SpawnPattern(WavePattern pat)
@@ -185,26 +325,26 @@ public class EnemySpawner : MonoBehaviour
         GameObject objToSpawn = pat.primary;
 
 
-         int midpoint = (positions.Count-1) / 2;
+        int midpoint = (positions.Count - 1) / 2;
 
-         //Center
-         SpawnAtPoint(objToSpawn, midpoint, midpoint);
-         SpawnAtPoint(objToSpawn, midpoint + 1, midpoint);
-         SpawnAtPoint(objToSpawn, midpoint, midpoint + 1);
-         SpawnAtPoint(objToSpawn, midpoint + 1, midpoint + 1);
+        //Center
+        SpawnAtPoint(objToSpawn, midpoint, midpoint);
+        SpawnAtPoint(objToSpawn, midpoint + 1, midpoint);
+        SpawnAtPoint(objToSpawn, midpoint, midpoint + 1);
+        SpawnAtPoint(objToSpawn, midpoint + 1, midpoint + 1);
 
-         objToSpawn = pat.secondary;
+        objToSpawn = pat.secondary;
 
         if (pat.numToSpawn > 1)
         {
             //Top left
-            SpawnAtPoint(objToSpawn, midpoint -1, midpoint);
-            SpawnAtPoint(objToSpawn, midpoint, midpoint -1);
-                
+            SpawnAtPoint(objToSpawn, midpoint - 1, midpoint);
+            SpawnAtPoint(objToSpawn, midpoint, midpoint - 1);
+
 
             //Top Right
             SpawnAtPoint(objToSpawn, midpoint + 2, midpoint);
-            SpawnAtPoint(objToSpawn, midpoint + 1, midpoint -1);
+            SpawnAtPoint(objToSpawn, midpoint + 1, midpoint - 1);
 
             //Bottom left
             SpawnAtPoint(objToSpawn, midpoint - 1, midpoint + 1);
@@ -214,8 +354,8 @@ public class EnemySpawner : MonoBehaviour
             //Bottom Right
             SpawnAtPoint(objToSpawn, midpoint + 1, midpoint + 2);
             SpawnAtPoint(objToSpawn, midpoint + 2, midpoint + 1);
-        }   
-        
+        }
+
     }
 
     private void CornerPattern(WavePattern pat)
@@ -235,7 +375,7 @@ public class EnemySpawner : MonoBehaviour
             if (!localSpacing)
             {
                 GameObject objToSpawn = pat.secondary;
-                if (i==0)
+                if (i == 0)
                 {
                     objToSpawn = pat.primary;
                 }
@@ -243,14 +383,14 @@ public class EnemySpawner : MonoBehaviour
                 if (i == 0)
                 {
                     SpawnAtPoint(objToSpawn, 0, 0); //Top Left
-                    SpawnAtPoint(objToSpawn, positions.Count-1, 0); //Top Right
-                    SpawnAtPoint(objToSpawn, 0, positions[0].Count-1); //Bottom Left
+                    SpawnAtPoint(objToSpawn, 0, positions[0].Count - 1); //Bottom Left
+                    SpawnAtPoint(objToSpawn, positions.Count - 1, 0); //Top Right
                     SpawnAtPoint(objToSpawn, positions.Count - 1, positions[0].Count - 1); //Bottom Right
                 }
                 else
                 {
-                    SpawnAtPoint(objToSpawn, i, 0); 
-                    SpawnAtPoint(objToSpawn, 0, i); 
+                    SpawnAtPoint(objToSpawn, i, 0);
+                    SpawnAtPoint(objToSpawn, 0, i);
 
                     SpawnAtPoint(objToSpawn, positions.Count - 1 - i, 0); //Top Right
                     SpawnAtPoint(objToSpawn, 0, positions[i].Count - 1 - i); //Top Right
@@ -269,7 +409,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void RandomPattern(WavePattern pat)
     {
-        
+
         for (int i = 0; i < pat.numToSpawn; i++)
         {
             if (pat.secondary != null)
@@ -305,7 +445,7 @@ public class EnemySpawner : MonoBehaviour
                 localSpacing = false;
             }
 
-            if(!localSpacing)
+            if (!localSpacing)
             {
                 GameObject objToSpawn = pat.secondary;
                 if (pat.numToSpawn - 1 == i || (pat.numToSpawn - 2 == i && pat.spacing))
@@ -355,14 +495,14 @@ public class EnemySpawner : MonoBehaviour
         }
         GameObject temp = GameObject.Instantiate(obj, spawnPoint, Quaternion.identity);
         temp.transform.parent = objContainer;
-        
+
         enemies.Add(temp);
         numAlive++;
     }
 
     public void KillEnemy(int amt)
     {
-        numAlive-=amt;
+        numAlive -= amt;
     }
 
 }

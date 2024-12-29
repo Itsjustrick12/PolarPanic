@@ -131,7 +131,7 @@ public class Enemy : MonoBehaviour
     {
         if (!isDead){
 
-            Debug.Log("Enemy Hit");
+            //Debug.Log("Enemy Hit");
             currHealth -= damage;
             GetComponent<SimpleFlash>().Flash(1f, 3, true);
 
