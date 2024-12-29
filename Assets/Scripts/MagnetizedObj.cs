@@ -81,23 +81,31 @@ public class MagnetizedObj : MonoBehaviour
 
     public void ApplyForce(MagnetizedObj otherObj)
     {
-        Vector2 DirectionToObj = DetermineDirection(otherObj);
-
-        //float dist = DirectionToObj.magnitude;
-
-        if (!otherObj.isStatic)
+        if (otherObj != null)
         {
-            //Squared falloff
-            //otherObj.rb.AddForce(-DetermineSign(otherObj.GetPolarity()) * strength * (DirectionToObj.normalized / DirectionToObj.sqrMagnitude), ForceMode2D.Force);
+            
+            Vector2 DirectionToObj = DetermineDirection(otherObj);
 
-            //Linear falloff
-            otherObj.rb.AddForce(-DetermineSign(otherObj.GetPolarity()) * strength * (DirectionToObj.normalized / DirectionToObj.magnitude), ForceMode2D.Force);
+            //float dist = DirectionToObj.magnitude;
+
+            if (!otherObj.isStatic)
+            {
+                //Squared falloff
+                //otherObj.rb.AddForce(-DetermineSign(otherObj.GetPolarity()) * strength * (DirectionToObj.normalized / DirectionToObj.sqrMagnitude), ForceMode2D.Force);
+
+                //Linear falloff
+                otherObj.rb.AddForce(-DetermineSign(otherObj.GetPolarity()) * strength * (DirectionToObj.normalized / DirectionToObj.magnitude), ForceMode2D.Force);
+            }
         }
     }
 
     public Vector2 DetermineDirection(MagnetizedObj otherObj)
     {
-        return transform.position - otherObj.transform.position;
+        if (otherObj != null)
+        {
+            return transform.position - otherObj.transform.position;
+        }
+        return Vector2.zero;
     }
 
     private int DetermineSign(int otherPolarity)

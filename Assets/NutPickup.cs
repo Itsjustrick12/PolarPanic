@@ -6,7 +6,8 @@ public class NutPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        //Had to do a workaround and make a point with a seperate collider than the magenetism script on the play
+        if (collision.gameObject.CompareTag("PickupPoint"))
         {
             GameManager.instance.UpdateNuts(value);
             Destroy(gameObject);
