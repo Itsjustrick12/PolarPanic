@@ -13384,8 +13384,9 @@ MonoBehaviour:
   currState: 1
   waveDelay: 3
   patterns:
-  - {fileID: 11400000, guid: 8148849de70b83b4a8d3e39104855fb2, type: 2}
+  - {fileID: 11400000, guid: 6728734a1c30c4e409269008c7bd1d17, type: 2}
   - {fileID: 11400000, guid: 5eab635c7b3b9644b89c9a71c325ab98, type: 2}
+  - {fileID: 11400000, guid: 8f110b69082ff03408ba595f4f3c6371, type: 2}
   on: 1
 --- !u!4 &1614095348
 Transform:
