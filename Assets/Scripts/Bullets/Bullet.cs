@@ -73,7 +73,16 @@ public class Bullet : MonoBehaviour
                 DestroyBullet();
             }
         }
-        if (collision.collider.CompareTag("Wall"))
+        if (collision.gameObject.layer == 11)
+        {
+            DestroyBullet();
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Debug.Log("Hello!!! " + collision.gameObject);
+        if (collision.gameObject.layer == 11)
         {
             DestroyBullet();
         }

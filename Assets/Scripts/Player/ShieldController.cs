@@ -21,6 +21,7 @@ public class ShieldController : MonoBehaviour
         magnetizedObj.SetPolarity(polarity);
         pivot = pivotObj.transform;
         transform.parent = pivot;
+        transform.localPosition = Vector3.zero;
         transform.position += Vector3.up * radius;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
