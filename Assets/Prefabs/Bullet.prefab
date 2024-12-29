@@ -32,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.75477, y: 4.184261, z: -0.10735392}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72,7 +72,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.25
+  m_Radius: 0.125
 --- !u!212 &7205448879746612353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.875, y: 0.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -171,9 +171,9 @@ MonoBehaviour:
   magnet: {fileID: 1729918457786825786}
   sprite: {fileID: 0}
   damage: 1
-  blue: {fileID: 21300000, guid: 8d554386d007e1e4989841a84b80cb12, type: 3}
-  red: {fileID: 21300000, guid: 07e1ab9e13b403e47b938591b96dff89, type: 3}
-  white: {fileID: 21300000, guid: 5218ee22887dd1448ac381a6180f4c3b, type: 3}
+  blue: {fileID: -6265320276793015901, guid: b6f22dd43d810604d96f1bef1f9399da, type: 3}
+  red: {fileID: -2874883796424843640, guid: 4f66a14d734eaf947b88c9a3f36ad268, type: 3}
+  white: {fileID: -5425667810362541478, guid: c813258f91aea8746a7d3b0d5bc63eac, type: 3}
 --- !u!114 &1729918457786825786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,4 +230,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 4
+  m_Radius: 2

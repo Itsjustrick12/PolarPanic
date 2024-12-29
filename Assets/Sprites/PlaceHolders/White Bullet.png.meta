@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4f66a14d734eaf947b88c9a3f36ad268
+guid: 5e5e26216318eb74b9051d61857764f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2874883796424843640
-    second: Red Bullet Big_0
+      213: 721190386575898446
+    second: White Bullet_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,7 +114,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Red Bullet Big_0
+      name: White Bullet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 7
-        height: 7
+        x: 5
+        y: 5
+        width: 6
+        height: 6
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88e129f3b6c5a18d0800000000000000
-      internalID: -2874883796424843640
+      spriteID: e477847e5de220a00800000000000000
+      internalID: 721190386575898446
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Red Bullet Big_0: -2874883796424843640
+      White Bullet_0: 721190386575898446
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
