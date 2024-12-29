@@ -39,46 +39,61 @@ public class PlayerMovement : MonoBehaviour
     {
         moveX = Input.GetAxisRaw("Horizontal");
         moveY = Input.GetAxisRaw("Vertical");
-
-        if (moveY > 0){
-            anim.SetBool("Up", true);
-            anim.SetBool("Down", false);
-            anim.SetBool("Left", false);
-            anim.SetBool("Right", false);
-        }
-        else if (moveY < 0)
+        if (!dodgeroll)
         {
-            anim.SetBool("Up", false);
-            anim.SetBool("Down", true);
-            anim.SetBool("Right", false);
-            anim.SetBool("Left", false);
-        }
-        else if (moveX == 0 && moveY == 0)
-        {
-            anim.SetBool("Up", false);
-            anim.SetBool("Down", false);
-            anim.SetBool("Left", false);
-            anim.SetBool("Right", false);
-        }
-        else if (moveX > 0)
-        {
-            anim.SetBool("Up", false);
-            anim.SetBool("Down", false);
-            anim.SetBool("Right", true);
-            anim.SetBool("Left", false);
-        }
-        else
-        {
-            anim.SetBool("Up", false);
-            anim.SetBool("Down", false);
-            anim.SetBool("Right", false);
-            anim.SetBool("Left", true);
+            if (moveY > 0){
+                ResetAnimBools();
+                anim.SetBool("Up", true);
+            }
+            else if (moveY < 0)
+            {
+                ResetAnimBools();
+                anim.SetBool("Down", true);
+            
+            }
+            else if (moveX == 0 && moveY == 0)
+            {
+                ResetAnimBools();
+            }
+            else if (moveX > 0)
+            {
+                ResetAnimBools();
+                anim.SetBool("Right", true);
+            
+            }
+            else
+            {
+                ResetAnimBools();
+                anim.SetBool("Left", true);
+            }
         }
 
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && !dodgeroll && !(moveX == 0 && moveY == 0))
         {
+
             dodgeroll = true;
+
+            ResetAnimBools();
+            anim.SetBool("Roll",true);
+
+
+            if (moveX > 0)
+            {
+                anim.SetBool("Right", true);
+            }
+            else if (moveX < 0)
+            {
+                anim.SetBool("Left", true);
+            }
+            else if (moveY > 0)
+            {
+                anim.SetBool("Up", true);
+            }
+            else if (moveY < 0)
+            {
+                anim.SetBool("Down", true);
+            }
             canDodgeroll = false;
             dodgerollTime = Time.time + dodgerollLength;
             dodgerollResetTime = Time.time + dodgerollLength + dodgerollCooldown;
@@ -91,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
             dodgeroll = false;
             shield.SetActive(true);
             Physics2D.IgnoreLayerCollision(7, 9, false);
+            Physics2D.IgnoreLayerCollision(7, 8, false);
         }
 
         if (!canDodgeroll && Time.time >= dodgerollResetTime)
@@ -120,5 +136,14 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = targetVelocity;
         }
+    }
+
+    public void ResetAnimBools()
+    {
+        anim.SetBool("Up", false);
+        anim.SetBool("Down", false);
+        anim.SetBool("Left", false);
+        anim.SetBool("Right", false);
+        anim.SetBool("Roll", false);
     }
 }
