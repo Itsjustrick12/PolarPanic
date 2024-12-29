@@ -119,10 +119,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //PLACE BULLET SPAWN HERE ONCE PREFAB IS MADE
     public void ShootTowardsPlayer()
     {
-        //Debug.Log("Enemy Shoots a Bullet");
         while(shootCooldown <= 0f)
         {
             shootCooldown = attackPattern.FireAttackPattern(ref attackPatternPos, this, shotSpawnPoint, bulletSpeed, bulletPolarity);
@@ -170,7 +168,6 @@ public class Enemy : MonoBehaviour
         }
         else if (polarity > 0)
         {
-            //Set Red
             screenSprite.sprite = red;
         }
         else

@@ -88,13 +88,28 @@ public class ShieldController : MonoBehaviour
         magnetizedObj.SetPolarity(polarity);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 9) // bullet layer
+        {
+            if (other.gameObject.TryGetComponent(out Bullet _hitBullet))
+            {
+                if (polarity == _hitBullet.magnet.GetPolarity())
+                {
+                    _hitBullet.reflected = true;
+                }
+            }
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.layer == 9) // bullet layer
         {
             if (other.gameObject.TryGetComponent(out Bullet _hitBullet))
             {
-                if(polarity == -_hitBullet.magnet.GetPolarity())
+                _hitBullet.reflected = true;
+                if (polarity == -_hitBullet.magnet.GetPolarity())
                 {
                     //Opposite polarities, stick!
                 }
