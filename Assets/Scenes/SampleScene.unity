@@ -523,7 +523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &592063722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7540,10 +7540,12 @@ MonoBehaviour:
   numAlive: 0
   currState: 1
   waveDelay: 3
+  timer: 0
   patterns:
   - {fileID: 11400000, guid: 6728734a1c30c4e409269008c7bd1d17, type: 2}
   - {fileID: 11400000, guid: 5eab635c7b3b9644b89c9a71c325ab98, type: 2}
   - {fileID: 11400000, guid: 8f110b69082ff03408ba595f4f3c6371, type: 2}
+  basicEnemies: []
   on: 1
   endless: 1
 --- !u!4 &1614095348

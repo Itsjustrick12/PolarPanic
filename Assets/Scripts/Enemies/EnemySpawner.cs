@@ -38,6 +38,10 @@ public class EnemySpawner : MonoBehaviour
     public float timer = 0f;
 
     [SerializeField] WavePattern[] patterns;
+
+    //
+    public GameObject[] basicEnemies;
+
     private int currPat = 0;
 
     public static EnemySpawner instance;
