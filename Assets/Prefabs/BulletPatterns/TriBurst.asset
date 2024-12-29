@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab41ec78f31bc841a4fc74875e26702, type: 3}
   m_Name: TriBurst
   m_EditorClassIdentifier: 
-  patternBullet: {fileID: 0}
+  patternBullet: {fileID: 7340907695961219310, guid: 59f01917eda22cb4bae95f054426ee41, type: 3}
   numBullets: 3
   timeBetweenShots: 0.2
   rotOffset: 0
