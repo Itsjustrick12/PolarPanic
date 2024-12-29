@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyState
@@ -17,8 +19,15 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float minDistance = 3f;
     [SerializeField] float shootRange = 5f;
-    [SerializeField] float fireRate = 1f;
+    //[SerializeField] float fireRate = 1f;
+    [Tooltip("Initial speed of bullets when spawned")]
+    [SerializeField] float bulletSpeed = 1f;
+    [SerializeField] public int bulletPolarity = 1;
     private float shootCooldown = 0f;
+
+    [SerializeField] AttackPattern attackPattern = null;
+    private int attackPatternPos = 0;
+    //public List<Coroutine> activeBulletCoroutines = new();
 
     [SerializeField] float maxHealth = 3f;
     private float currHealth = 0f;
@@ -77,9 +86,9 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        shootCooldown += Time.deltaTime;
+        shootCooldown -= Time.fixedDeltaTime;
         DetermineMovement();
-        if (shootCooldown >= fireRate && state == EnemyState.Hold)
+        if (shootCooldown <= 0f && state == EnemyState.Hold)
         {
             ShootTowardsPlayer();
         }
@@ -105,7 +114,10 @@ public class Enemy : MonoBehaviour
     public void ShootTowardsPlayer()
     {
         //Debug.Log("Enemy Shoots a Bullet");
-        shootCooldown = 0f;
+        while(shootCooldown <= 0f)
+        {
+            shootCooldown = attackPattern.FireAttackPattern(ref attackPatternPos, this, transform, bulletSpeed, bulletPolarity);
+        }
     }
 
     public void TakeDamage(float damage)
@@ -120,6 +132,15 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        //Cancel all scheduled bullets bc the enemy died
+        StopAllCoroutines();
+        /*
+        foreach (Coroutine _coroutine in activeBulletCoroutines)
+        {
+            StopCoroutine(_coroutine);
+        }
+        */
+
         SpawnPickup();
         Destroy(gameObject);
     }

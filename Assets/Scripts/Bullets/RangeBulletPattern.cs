@@ -17,7 +17,7 @@ public class RangeBulletPattern : BulletPattern
     float sourceZRot = 0f;
 
 
-    public override void SpawnPattern(Transform _spawnPos, float _initialForce, int _polarity)
+    public override void SpawnPattern(Transform _spawnPos, float _initialSpeed, int _polarity, Enemy _shooter)
     {
         if (useSourceRotation)
         {
@@ -31,8 +31,7 @@ public class RangeBulletPattern : BulletPattern
             for (int i = 0; i < numBullets; i++)
             {
                 Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, _midSpread + Random.Range(-range, range)) * Vector3.right;
-                Bullet _newBullet = Instantiate(patternBullet, _spawnPos.position + posOffset * _newBulletDir, Quaternion.identity);
-                FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialForce, _polarity);
+                FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialSpeed, _polarity);
             }
         }
         else
@@ -42,7 +41,7 @@ public class RangeBulletPattern : BulletPattern
             {
                 float _midSpread = rotOffset + sourceZRot;
                 Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, _midSpread) * Vector3.right;
-                FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialForce, _polarity);
+                FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialSpeed, _polarity);
             }
             else
             {
@@ -52,8 +51,7 @@ public class RangeBulletPattern : BulletPattern
                 for (int i = 0; i < numBullets; i++)
                 {
                     Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, i * _between + (rotOffset - range) + sourceZRot) * Vector3.right;
-                    Bullet _newBullet = Instantiate(patternBullet, _spawnPos.position + posOffset * _newBulletDir, Quaternion.identity);
-                    FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialForce, _polarity);
+                    FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialSpeed, _polarity);
                 }
             }
         }

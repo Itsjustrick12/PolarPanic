@@ -15,17 +15,18 @@ public class BurstBulletPattern : BulletPattern
     [SerializeField] public bool useSourceRotation = true;
 
 
-    public override void SpawnPattern(Transform _spawnPos, float _initialForce, int _polarity)
+    public override void SpawnPattern(Transform _spawnPos, float _initialSpeed, int _polarity, Enemy _shooter)
     {
         if(numBullets <= 0)
         {
             return;
         }
 
-        GameManager.instance.StartCoroutine(ShootAndWait(_spawnPos, numBullets, _initialForce, _polarity));
+        //_shooter.activeBulletCoroutines.Add(_shooter.StartCoroutine(_newCoroutine));
+        _shooter.StartCoroutine(ShootAndWait(_spawnPos, numBullets, _initialSpeed, _polarity, _shooter));
     }
 
-    public IEnumerator ShootAndWait(Transform _spawnPos, int _numBulletsRemaining, float _initialForce, int _polarity)
+    public IEnumerator ShootAndWait(Transform _spawnPos, int _numBulletsRemaining, float _initialForce, int _polarity, Enemy _shooter)
     {
         Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, rotOffset + (useSourceRotation ? _spawnPos.eulerAngles.z : 0f)) * Vector3.right;
         FireBullet(_spawnPos.position + posOffset * _newBulletDir, _newBulletDir, _initialForce, _polarity);
@@ -39,6 +40,7 @@ public class BurstBulletPattern : BulletPattern
         }
 
         yield return new WaitForSeconds(timeBetweenShots);
-        GameManager.instance.StartCoroutine(ShootAndWait(_spawnPos, _numBulletsRemaining, _initialForce, _polarity));
+        //_shooter.activeBulletCoroutines.Add(_shooter.StartCoroutine(ShootAndWait(_spawnPos, _numBulletsRemaining, _initialForce, _polarity, _shooter)));
+        _shooter.StartCoroutine(ShootAndWait(_spawnPos, _numBulletsRemaining, _initialForce, _polarity, _shooter));
     }
 }
