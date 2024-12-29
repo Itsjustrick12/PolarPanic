@@ -25,4 +25,9 @@ public class GameManager : MonoBehaviour
     {
         nuts += amt;
     }
+
+    public void GameOver()
+    {
+        Debug.Log("Player Has Died");
+    }
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 enum SpawnerState
 {
     SPAWNING,
-    WAITING
+    COOLDOWN,
+    READY,
+    STOPPED
 }
 public class EnemySpawner : MonoBehaviour
 {
@@ -31,8 +33,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int numAlive = 0;
 
     //Used for determining the spawning of enemies
-    [SerializeField] SpawnerState currState = SpawnerState.WAITING;
+    [SerializeField] SpawnerState currState = SpawnerState.COOLDOWN;
     [SerializeField] float waveDelay = 5f;
+    public float timer = 0f;
 
     [SerializeField] WavePattern[] patterns;
     public int currPat = 0;
@@ -70,26 +73,47 @@ public class EnemySpawner : MonoBehaviour
 
             }
 
-            if ((numAlive == 0 && currState == SpawnerState.WAITING) && (currPat >= 0 && currPat < patterns.Length))
+            //Enter state to spawn next wave
+            if ((numAlive == 0 && currState == SpawnerState.READY) && timer > waveDelay)
             {
                 currState = SpawnerState.SPAWNING;
                 Debug.Log("Spawning new wave...");
                 SpawnPattern(patterns[currPat]);
+
+                if (currPat + 1 > patterns.Length - 1)
+                {
+                    currState = SpawnerState.STOPPED;
+
+                }
+                else
+                {
+                    //Enter waiting state after wave spawn
+                    timer = 0f;
+                    currState = SpawnerState.COOLDOWN;
+                    currPat++;
+                }
+
             }
-            else if (numAlive == 0 && Input.GetKeyDown(KeyCode.Space))
+            else if (numAlive == 0 && currState == SpawnerState.STOPPED)
             {
-                StartCoroutine(StartDelay());
+                //GAME OVER STATE HERE
+                Debug.Log("ALL WAVES CLEARED");
+                on = false;
             }
         }
     }
 
-    IEnumerator StartDelay()
+    private void FixedUpdate()
     {
-        yield return new WaitForSeconds(waveDelay);
-        currState = SpawnerState.WAITING;
-        currPat++;
+        if ((numAlive == 0 && currState == SpawnerState.COOLDOWN) && on)
+        {
+            timer += Time.deltaTime;
+            if (timer > waveDelay)
+            {
+                currState = SpawnerState.READY;
+            }
+        }
     }
-
     //generates spawn points based off the range of values
     public void GeneratePoints()
     {
