@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
     private int currPat = 0;
 
     [SerializeField] bool on = false;
+    [SerializeField] bool endless = true;
 
     private void Start()
     {
@@ -138,6 +139,11 @@ public class EnemySpawner : MonoBehaviour
         
 
         //Debug.Log("Capacity" + positions.Count);
+    }
+
+    public void GeneratePattern()
+    {
+
     }
 
     public void SpawnPattern(WavePattern pat)
