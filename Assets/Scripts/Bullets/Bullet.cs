@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(MagnetizedObj))]
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] public Collider2D physicsBody;
     public Rigidbody2D rb;
     public MagnetizedObj magnet;
     public SpriteRenderer sprite;

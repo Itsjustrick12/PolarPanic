@@ -97,6 +97,7 @@ public class ShieldController : MonoBehaviour
                 if (polarity == _hitBullet.magnet.GetPolarity())
                 {
                     _hitBullet.reflected = true;
+                    _hitBullet.physicsBody.excludeLayers = 0;
                 }
             }
         }
@@ -109,6 +110,7 @@ public class ShieldController : MonoBehaviour
             if (other.gameObject.TryGetComponent(out Bullet _hitBullet))
             {
                 _hitBullet.reflected = true;
+                _hitBullet.physicsBody.excludeLayers = 0;
                 if (polarity == -_hitBullet.magnet.GetPolarity())
                 {
                     //Opposite polarities, stick!
