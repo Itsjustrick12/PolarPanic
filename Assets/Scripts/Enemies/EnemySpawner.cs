@@ -121,11 +121,12 @@ public class EnemySpawner : MonoBehaviour
                     currState = SpawnerState.COOLDOWN;
                     currPat++;
                 }
-
+                
                 if (endless)
                 {
                     currPat = 0;
                     wavesSpawned++;
+                    GameManager.instance.UpdateWaves(wavesSpawned);
                     if (wavesSpawned >= waveForHard)
                     {
                         currDifficulty = Difficulty.Hard;

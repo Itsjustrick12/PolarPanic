@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject darkScreen;
 
     public HeartUI heartUI;
+    public ScrapUI scrapUI;
+    public WaveUI waveUI;
 
     public int nuts = 0;
     public SoundClip pickupSound;
@@ -33,6 +35,8 @@ public class GameManager : MonoBehaviour
         if (gameScene)
         {
             heartUI = FindFirstObjectByType<HeartUI>();
+            scrapUI = FindFirstObjectByType<ScrapUI>();
+            waveUI = FindFirstObjectByType<WaveUI>();
             darkScreen.SetActive(false);
             PauseScreen.SetActive(false);
         }
@@ -52,14 +56,19 @@ public class GameManager : MonoBehaviour
                 return;
             }
 
-            if (!paused)
+            if (gameScene)
             {
-                Pause();
+
+                if (!paused)
+                {
+                    Pause();
+                }
+                else
+                {
+                    Unpause();
+                }
             }
-            else
-            {
-                Unpause();
-            }
+
         }
     }
 
@@ -72,7 +81,13 @@ public class GameManager : MonoBehaviour
     public void UpdateNuts(int amt)
     {
         nuts += amt;
+        scrapUI.UpdateScrap(amt);
         player.GetComponentInChildren<SoundPlayer>().PlaySound(pickupSound);
+    }
+
+    public void UpdateWaves(int amt)
+    {
+        waveUI.UpdateWaves(amt);
     }
 
     public void UpdateHealth(float health)
