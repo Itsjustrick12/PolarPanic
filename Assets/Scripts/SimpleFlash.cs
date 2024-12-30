@@ -38,7 +38,7 @@ public class SimpleFlash : MonoBehaviour
 
     #region Unity Callbacks
 
-    void Start()
+    void Awake()
     {
         // Get the SpriteRenderer to be used,
         // alternatively you could set it from the inspector.
@@ -51,6 +51,14 @@ public class SimpleFlash : MonoBehaviour
 
         originalColor = spriteRenderer.color;
         newColor = flashMaterial.color;
+    }
+
+    void Update()
+    {
+        if (flashRoutine == null && spriteRenderer.color != originalColor)
+        {
+            spriteRenderer.color = originalColor;
+        }
     }
 
     #endregion
