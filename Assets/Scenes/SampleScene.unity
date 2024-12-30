@@ -8965,6 +8965,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 419816093}
     - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
+      propertyPath: currDifficulty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
       propertyPath: patterns.Array.size
       value: 3
       objectReference: {fileID: 0}

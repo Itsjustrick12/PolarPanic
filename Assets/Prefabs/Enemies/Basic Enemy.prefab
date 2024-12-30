@@ -162,7 +162,7 @@ MonoBehaviour:
   bulletPolarity: 1
   shootCooldown: 0
   shotSpawnPoint: {fileID: 3895987568843787076}
-  attackPattern: {fileID: 11400000, guid: 25a89a7b8e792ac4b9204f528adc592c, type: 2}
+  attackPattern: {fileID: 11400000, guid: b87ce45dcac2dcb4882dd72cf976eb65, type: 2}
   screenSprite: {fileID: 21830308125414180}
   red: {fileID: -8220256635514738991, guid: 4612241c9c3c33546b63e8a4dae1dff3, type: 3}
   blue: {fileID: 5090302077561202693, guid: 4612241c9c3c33546b63e8a4dae1dff3, type: 3}
@@ -170,7 +170,6 @@ MonoBehaviour:
   maxHealth: 3
   hit: {fileID: 11400000, guid: 5e371e07239eac44cbcd981d61f5b4c8, type: 2}
   shoot: {fileID: 11400000, guid: 01f0f9e70e3c0534eb172c685556e24a, type: 2}
-  dropHeal: {fileID: 11400000, guid: 1eb34a0cc098e7e4a8d26c5fda859a7b, type: 2}
   soundPlayer: {fileID: 6953901315997729649}
   deathEffect: {fileID: 7996908416311053135, guid: 2bc32b47f86c2964c8002b54d71667b7, type: 3}
   drops:

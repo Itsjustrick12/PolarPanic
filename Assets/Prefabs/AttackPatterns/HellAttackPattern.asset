@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ed1915e907abd48bfef0636aca68ee, type: 3}
+  m_Name: HellAttackPattern
+  m_EditorClassIdentifier: 
+  attackPattern:
+  - pattern: {fileID: 11400000, guid: 34c90b143f6bb0d4f9d506b49f22fb87, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 05055bf9af091dd46b555620f055b573, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 86964a5775f23bf43b1a3a856ff1c753, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 34c90b143f6bb0d4f9d506b49f22fb87, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 05055bf9af091dd46b555620f055b573, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 86964a5775f23bf43b1a3a856ff1c753, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 34c90b143f6bb0d4f9d506b49f22fb87, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 86964a5775f23bf43b1a3a856ff1c753, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 05055bf9af091dd46b555620f055b573, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 34c90b143f6bb0d4f9d506b49f22fb87, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 86964a5775f23bf43b1a3a856ff1c753, type: 2}
+    cooldown: 0.25
+  - pattern: {fileID: 11400000, guid: 05055bf9af091dd46b555620f055b573, type: 2}
+    cooldown: 0
+  - pattern: {fileID: 11400000, guid: 34c90b143f6bb0d4f9d506b49f22fb87, type: 2}
+    cooldown: 1.5
+  - pattern: {fileID: 11400000, guid: 4174112c6f834dd4e80e27f9d9382fec, type: 2}
+    cooldown: 0
+  - pattern: {fileID: 11400000, guid: 4174112c6f834dd4e80e27f9d9382fec, type: 2}
+    cooldown: 0
+  - pattern: {fileID: 11400000, guid: 4174112c6f834dd4e80e27f9d9382fec, type: 2}
+    cooldown: 0
+  randomOrder: 0
+  guaranteeNoRepeats: 1
