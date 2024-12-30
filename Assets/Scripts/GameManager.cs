@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     public int nuts = 0;
+    public SoundClip pickupSound;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     public void UpdateNuts(int amt)
     {
         nuts += amt;
+        player.GetComponentInChildren<SoundPlayer>().PlaySound(pickupSound);
     }
 
     public void GameOver()

@@ -319,6 +319,9 @@ MonoBehaviour:
   maxHealth: 3
   isDead: 0
   invincible: 0
+  hurt: {fileID: 11400000, guid: 19a35960f738b4d4aad00d9632444796, type: 2}
+  death: {fileID: 11400000, guid: 9cdae7ab31caebf42be37a90c2a28b62, type: 2}
+  soundPlayer: {fileID: 1204054507360643292}
 --- !u!114 &6898849143292767880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +553,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31f61b2904bb9a741aa14e2b2976413a, type: 3}
+--- !u!114 &1204054507360643292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 886362805277679126, guid: 31f61b2904bb9a741aa14e2b2976413a, type: 3}
+  m_PrefabInstance: {fileID: 2087796073153279690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c645889cf1ca84b8b4eca6f2938f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1488175353853127113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 603017179443076867, guid: 31f61b2904bb9a741aa14e2b2976413a, type: 3}

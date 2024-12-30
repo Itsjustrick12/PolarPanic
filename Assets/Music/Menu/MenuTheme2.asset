@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0dbb07ce11e4bc40ae3eb1b248f06e1, type: 3}
   m_Name: MenuTheme2
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 94cd3f17f131d1f408b828ac50bf4663, type: 3}
-  BPM: 150
+  clip: {fileID: 8300000, guid: ef0f7fb3d1054d043af097e9942f6f18, type: 3}
+  BPM: 142
   timeSignature: 4
   timeSignatureBottom: 4
-  barsLength: 64
+  barsLength: 96
   area: 1

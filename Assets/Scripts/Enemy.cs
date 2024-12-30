@@ -36,6 +36,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] Sprite white;
 
     [SerializeField] float maxHealth = 3f;
+    [SerializeField] private SoundClip hit, death;
+    [SerializeField] private SoundPlayer soundPlayer;
     private float currHealth = 0f;
 
     private Vector2 playerDirection;
@@ -129,9 +131,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (!isDead){
-
-            //Debug.Log("Enemy Hit");
+        if (!isDead)
+        {
             currHealth -= damage;
             GetComponent<SimpleFlash>().Flash(1f, 3, true);
 
@@ -139,12 +140,17 @@ public class Enemy : MonoBehaviour
             {
                 Die();
             }
+            else 
+            {
+                soundPlayer.PlaySound(hit, 1, false);
+            }
         }
     }
 
     public void Die()
     {
         isDead = true;
+        soundPlayer.PlaySound(death, 1, false); // TODO this won't work without a coroutine for the dead robot to stick around
         //Cancel all scheduled bullets bc the enemy died
         StopAllCoroutines();
         /*

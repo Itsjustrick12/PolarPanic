@@ -665,6 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 954155491}
   nuts: 0
+  pickupSound: {fileID: 11400000, guid: 9e6d07710ff55c74685bb90d89751be6, type: 2}
 --- !u!4 &1031503550
 Transform:
   m_ObjectHideFlags: 0
@@ -7106,7 +7107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1711891721}
-  - component: {fileID: 1711891720}
+  - component: {fileID: 1711891722}
   m_Layer: 0
   m_Name: MusicOnLoad
   m_TagString: Untagged
@@ -7114,20 +7115,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1711891720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1711891719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e2625dd5de6172439ab6cc98292415b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newTrack: {fileID: 11400000, guid: e8c1372785a932447a3b798eb1f3014f, type: 2}
-  newArea: 1
 --- !u!4 &1711891721
 Transform:
   m_ObjectHideFlags: 0
@@ -7143,6 +7130,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1711891722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711891719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfdb2423ddea734ba4cc08326a8ea85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newTrack: {fileID: 0}
+  newArea: 1
+  delay: 0.25
+  clips:
+  - {fileID: 11400000, guid: e8c1372785a932447a3b798eb1f3014f, type: 2}
+  - {fileID: 11400000, guid: b9b846878c97f3949890e68bfa69986f, type: 2}
 --- !u!1001 &7408260315400043400
 PrefabInstance:
   m_ObjectHideFlags: 0
