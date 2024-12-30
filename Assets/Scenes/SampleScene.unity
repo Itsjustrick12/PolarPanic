@@ -7222,18 +7222,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 314547283024752476, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 314547283024752476, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 314547283024752476, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2233342640212133036, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7243,17 +7231,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 391420495}
     - target: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: maxCharge
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: sliderFill
       value: 
       objectReference: {fileID: 1677233094}
-    - target: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: bounceForce
-      value: 1.8
-      objectReference: {fileID: 0}
     - target: {fileID: 5408514469421593940, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.02
@@ -7292,18 +7272,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5408514469421593940, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898849143292767880, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: polarity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898849143292767880, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8178215634274057646, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
