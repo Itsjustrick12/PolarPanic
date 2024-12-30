@@ -387,7 +387,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -8888,6 +8888,30 @@ PrefabInstance:
       propertyPath: objContainer
       value: 
       objectReference: {fileID: 419816093}
+    - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
+      propertyPath: patterns.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
+      propertyPath: 'patterns.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e28d8fa64683f846aa525e7f89982b5, type: 2}
+    - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
+      propertyPath: 'patterns.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 35fa86c008ea277439a95e397442b165, type: 2}
+    - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
+      propertyPath: 'patterns.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 52ea6c91ff16b8249a8f06f8282607e6, type: 2}
+    - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
+      propertyPath: 'patterns.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 52ea6c91ff16b8249a8f06f8282607e6, type: 2}
+    - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
+      propertyPath: 'patterns.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 52ea6c91ff16b8249a8f06f8282607e6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
