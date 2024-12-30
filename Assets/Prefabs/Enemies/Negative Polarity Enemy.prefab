@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 21830308125414180, guid: c242c4942e613cf48a675c8d1d5235cf, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1356265042483427029, guid: 9be82b60e31640f4b8fa9cdab1da576b, type: 3}
+      objectReference: {fileID: -8616974608543565196, guid: 31cbb5ced2859cf4a8034a0866991e20, type: 3}
     - target: {fileID: 21830308125414180, guid: c242c4942e613cf48a675c8d1d5235cf, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -27,7 +27,11 @@ PrefabInstance:
     - target: {fileID: 875034821120226156, guid: c242c4942e613cf48a675c8d1d5235cf, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2002971511, guid: 81cc05d3b20042f4784e921ca13ac7c5, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 875034821120226156, guid: c242c4942e613cf48a675c8d1d5235cf, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2098869460540230953, guid: c242c4942e613cf48a675c8d1d5235cf, type: 3}
       propertyPath: m_Name
       value: Negative Polarity Enemy
