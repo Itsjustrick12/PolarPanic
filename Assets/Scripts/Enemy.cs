@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     [Tooltip("Initial speed of bullets when spawned")]
     [SerializeField] float bulletSpeed = 1f;
     [SerializeField] public int bulletPolarity = 1;
-    private float shootCooldown = 0f;
+    public float shootCooldown = 0f;
     [SerializeField] Transform shotSpawnPoint;
 
     [SerializeField] AttackPattern attackPattern = null;
