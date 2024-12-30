@@ -10,6 +10,5 @@ public class ToScene : MonoBehaviour
         {
             GameManager.instance.ToMenu();
         }
-
     }
 }

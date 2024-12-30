@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
     {
         ScreenWipe.current.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
         ChangeScene.changingScene = true;
+        AudioManager.instance.FadeOutCurrent();
         ScreenWipe.current.WipeIn();
         yield return new WaitForSecondsRealtime(1f);
         ScreenWipe.current.GetComponent<Animator>().updateMode = AnimatorUpdateMode.Normal;

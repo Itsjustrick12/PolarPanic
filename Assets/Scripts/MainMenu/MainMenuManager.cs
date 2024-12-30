@@ -12,15 +12,19 @@ using System.IO;
 public class MainMenuManager : MonoBehaviour
 {
     public static bool inMainMenu = false;
-    public MusicClip menuMusic;
+    public MusicClip menuMusic, menuMusic2;
 
-    public void Start()
+    public void Awake()
     {
-        ScreenWipe.current.PostWipe += PlayMenuMusic;
+        ScreenWipe.current.PostUnwipe += PlayMenuMusic;
     }
 
-   public void PlayMenuMusic()
-   {
-        AudioManager.instance.ChangeBGM(menuMusic);
-   }
+    public void PlayMenuMusic()
+    {
+        int rand = Random.Range(0, 2);
+        if (rand == 1)
+            AudioManager.instance.ChangeBGM(menuMusic);
+        else
+            AudioManager.instance.ChangeBGM(menuMusic2);
+    }
 }

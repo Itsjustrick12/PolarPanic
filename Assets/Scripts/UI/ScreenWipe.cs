@@ -35,6 +35,7 @@ public class ScreenWipe : MonoBehaviour
     public void CallPostWipe()
     {
         PostWipe?.Invoke();
+        Debug.Log("hkjasfdh");
     }
 
     public void ScreenRevealed()
