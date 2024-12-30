@@ -235,6 +235,8 @@ MonoBehaviour:
   dodgerollSpeedMultiplier: 1.5
   shield: {fileID: 2339034056926762324}
   anim: {fileID: 0}
+  soundPlayer: {fileID: 1204054507360643292}
+  roll: {fileID: 11400000, guid: 65b5026598e899b4f81baf05d6a8bd82, type: 2}
 --- !u!61 &973749282022505837
 BoxCollider2D:
   m_ObjectHideFlags: 0
