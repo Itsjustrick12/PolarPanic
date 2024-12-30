@@ -7,7 +7,7 @@ using UnityEngine;
 public class Settings
 {
     public float masterVolume = 1f;
-    public float musicVolume = 1f;
+    public float musicVolume = -10f;
     public float soundVolume = 1f;
     public bool musicMute = false;
     public bool soundMute = false;
