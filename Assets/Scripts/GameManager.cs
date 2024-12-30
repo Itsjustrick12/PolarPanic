@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false, paused = false;
 
     [SerializeField] GameObject PauseScreen;
+    [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject darkScreen;
 
     public HeartUI heartUI;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
             waveUI = FindFirstObjectByType<WaveUI>();
             darkScreen.SetActive(false);
             PauseScreen.SetActive(false);
+            gameOverScreen.SetActive(false);
         }
     }
 
@@ -97,6 +99,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         AudioManager.instance.Stop();
+        gameOverScreen.SetActive(true);
+        darkScreen.SetActive(true);
         gameOver = true;
         AudioSource[] sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
         Time.timeScale = 0;
