@@ -96,9 +96,11 @@ MonoBehaviour:
   - {fileID: 5649767202930625648, guid: 7bf402f3eeee6624abab61c3e86f3e73, type: 3}
   - {fileID: 5649767202930625648, guid: a231f88f7695acf4096d805c3bde5223, type: 3}
   - {fileID: 5649767202930625648, guid: e9af5bf2ddee9384bb74b11d9925c4b4, type: 3}
-  advancedEnemies:
   - {fileID: 5649767202930625648, guid: 01382b0afa88be140916c230bc876c4d, type: 3}
   - {fileID: 5649767202930625648, guid: c4391540529061743abe9b9fc3ac4379, type: 3}
+  advancedEnemies:
+  - {fileID: 5649767202930625648, guid: 29125142b404f694a810a715c4663f53, type: 3}
+  - {fileID: 5649767202930625648, guid: 55013f4df0dce1e4bbab4039b471efa5, type: 3}
   - {fileID: 5649767202930625648, guid: e4d61a082c20725439f6d6655ac07a0c, type: 3}
   - {fileID: 5649767202930625648, guid: 82ecb20cb3dd5e747932e6be851a6f76, type: 3}
   currDifficulty: 1

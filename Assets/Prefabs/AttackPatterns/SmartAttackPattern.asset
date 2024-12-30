@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ed1915e907abd48bfef0636aca68ee, type: 3}
   m_Name: SmartAttackPattern
   m_EditorClassIdentifier: 
-  attackPattern: []
+  attackPattern:
+  - pattern: {fileID: 0}
+    cooldown: 0
+  - pattern: {fileID: 0}
+    cooldown: 0
+  - pattern: {fileID: 0}
+    cooldown: 0
+  - pattern: {fileID: 0}
+    cooldown: 0
   randomOrder: 0
   guaranteeNoRepeats: 1
