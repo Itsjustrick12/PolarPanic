@@ -18,8 +18,8 @@ public class DeathEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.paused) return;
-        
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
+
         if (Time.time >= startTime + duration)
         {
             Destroy(gameObject);

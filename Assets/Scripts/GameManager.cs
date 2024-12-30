@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             {
                 Unpause();
             }
-        }       
+        }
     }
 
     public void HealPlayer(int amt)
@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.Stop();
         gameOver = true;
+        AudioSource[] sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        Time.timeScale = 0;
         Debug.Log("Player Has Died");
     }
 
@@ -86,32 +88,42 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ReloadScene()
     {
+        ScreenWipe.current.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
         ChangeScene.changingScene = true;
         ScreenWipe.current.WipeIn();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
+        ScreenWipe.current.GetComponent<Animator>().updateMode = AnimatorUpdateMode.Normal;
+        Time.timeScale = 1;
         SceneManager.LoadScene("SampleScene");
         ChangeScene.changingScene = false;
     }
 
     public void Pause()
     {
-        AudioSource[] sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
         paused = true;
-        Time.timeScale = 0;
-        foreach (AudioSource source in sources)
+        if (!gameOver)
         {
-            source.Pause();
+            AudioSource[] sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+            Time.timeScale = 0;
+            foreach (AudioSource source in sources)
+            {
+                source.Pause();
+            }
         }
     }
 
     public void Unpause()
     {
-        AudioSource[] sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
         paused = false;
-        Time.timeScale = 1;
-        foreach (AudioSource source in sources)
+        if (!gameOver)
         {
-            source.UnPause();
+            AudioSource[] sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+            Time.timeScale = 1;
+            foreach (AudioSource source in sources)
+            {
+                source.UnPause();
+            }
         }
+        
     }
 }

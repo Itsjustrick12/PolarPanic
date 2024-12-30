@@ -44,8 +44,8 @@ public class ShieldController : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.paused) return;
-        
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
+
         Vector3 orbVector = Camera.main.WorldToScreenPoint(pivotObj.transform.position);
         orbVector = Input.mousePosition - orbVector;
         float angle = Mathf.Atan2(orbVector.y, orbVector.x) * Mathf.Rad2Deg;

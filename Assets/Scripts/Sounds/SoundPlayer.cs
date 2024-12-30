@@ -15,8 +15,8 @@ public class SoundPlayer : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.paused) return;
-        
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
+
         if (!debugSounds) return;
         string text = "";
         for (int index = sources.Length - 1; index >= 0; index--)

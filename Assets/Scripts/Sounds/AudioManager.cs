@@ -121,8 +121,8 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.paused) return;
-        
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
+
         if (instance == null)
         {
             instance = this;
@@ -261,7 +261,7 @@ public class AudioManager : MonoBehaviour
         if (newArea == GameArea.CURRENT) newArea = currentArea;
 
         // carry on music if area has not changed
-        bool carryOn = newArea == currentArea;
+        bool carryOn = false; // HAHA no
         currentArea = newArea;
 
         //Calculate loop point

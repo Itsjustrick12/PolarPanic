@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.paused) return;
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
 
         Vector2 toPlayer = player.position - transform.position;
         playerDirection = toPlayer.normalized;
@@ -105,8 +105,8 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.instance.paused) return;
-        
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
+
         shootCooldown -= Time.fixedDeltaTime;
         DetermineMovement();
         if (shootCooldown <= 0f && state == EnemyState.Hold)
