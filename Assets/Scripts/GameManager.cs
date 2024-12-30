@@ -50,11 +50,6 @@ public class GameManager : MonoBehaviour
                 Unpause();
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Retry();
-        }
     }
 
     public void HealPlayer(int amt)
