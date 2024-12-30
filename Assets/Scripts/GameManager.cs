@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
             {
                 return;
             }
-
             if (MainMenuManager.inMainMenu)
             {
                 return;
@@ -111,6 +110,7 @@ public class GameManager : MonoBehaviour
     public void Retry()
     {
         gameOver = false;
+        MainMenuManager.inMainMenu = false;
         if (!ChangeScene.changingScene)
         {
             StartCoroutine(LoadScene("GameScene"));

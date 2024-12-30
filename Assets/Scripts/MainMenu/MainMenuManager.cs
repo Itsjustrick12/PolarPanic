@@ -13,18 +13,29 @@ public class MainMenuManager : MonoBehaviour
 {
     public static bool inMainMenu = false;
     public MusicClip menuMusic, menuMusic2;
+    public GameObject CreditsPanel;
 
     public void Awake()
     {
-        ScreenWipe.current.PostUnwipe += PlayMenuMusic;
+        // ScreenWipe.current.PostUnwipe += PlayMenuMusic;
     }
 
-    public void PlayMenuMusic()
+    // public void PlayMenuMusic()
+    // {
+    //     int rand = Random.Range(0, 2);
+    //     if (rand == 1)
+    //         AudioManager.instance.ChangeBGM(menuMusic, 0);
+    //     else
+    //         AudioManager.instance.ChangeBGM(menuMusic2, 0);
+    // }
+
+    public void OpenCredits()
     {
-        int rand = Random.Range(0, 2);
-        if (rand == 1)
-            AudioManager.instance.ChangeBGM(menuMusic);
-        else
-            AudioManager.instance.ChangeBGM(menuMusic2);
+        CreditsPanel.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        CreditsPanel.SetActive(false);
     }
 }
