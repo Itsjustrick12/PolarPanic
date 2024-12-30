@@ -19,8 +19,11 @@ public class SwitchMusicOnLoad : MonoBehaviour
     {
         if (newTrack != null)
         {
+            theAM = FindFirstObjectByType<AudioManager>();
+            theAM.ChangeBGM(newTrack, newArea);
             if (delay > 0)
             {
+                theAM.PauseCurrent();
                 StartCoroutine(PlayMusicDelayed());
             }
             else
@@ -34,6 +37,6 @@ public class SwitchMusicOnLoad : MonoBehaviour
     IEnumerator PlayMusicDelayed()
     {
         yield return new WaitForSeconds(delay);
-        AudioManager.instance.ChangeBGM(newTrack, newArea);
+        AudioManager.instance.UnPauseCurrent();
     }
 }
