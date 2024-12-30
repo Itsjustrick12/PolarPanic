@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void HealPlayer(int amt)
+    {
+        player.GetComponentInChildren<PlayerHealth>().Heal(amt);
+    }
+
 
     public void UpdateNuts(int amt)
     {
