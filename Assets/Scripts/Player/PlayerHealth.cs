@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public float health = 0f;
-    public float maxHealth = 3f;
+    public float maxHealth = 10f;
     public bool isDead = false;
 
     public bool invincible = false;

@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 3
+  maxHealth: 10
   isDead: 0
   invincible: 0
   hurt: {fileID: 11400000, guid: 19a35960f738b4d4aad00d9632444796, type: 2}
