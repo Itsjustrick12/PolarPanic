@@ -161,7 +161,7 @@ MonoBehaviour:
   bulletSpeed: 3
   bulletPolarity: 1
   shotSpawnPoint: {fileID: 3895987568843787076}
-  attackPattern: {fileID: 11400000, guid: 9a43c0bfd61e1a64096ca820eac40fe0, type: 2}
+  attackPattern: {fileID: 11400000, guid: 25a89a7b8e792ac4b9204f528adc592c, type: 2}
   screenSprite: {fileID: 21830308125414180}
   red: {fileID: -8220256635514738991, guid: 4612241c9c3c33546b63e8a4dae1dff3, type: 3}
   blue: {fileID: 5090302077561202693, guid: 4612241c9c3c33546b63e8a4dae1dff3, type: 3}
