@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health = 0f;
-    public float maxHealth = 10f;
+    public int health = 0;
+    public int maxHealth = 10;
     public bool isDead = false;
 
     public bool invincible = false;
@@ -26,12 +26,15 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         if ( !invincible )
         {
 
             health -= damage;
+            //Update heart UI
+            GameManager.instance.UpdateHealth(health);
+
             GetComponent<SimpleFlash>().Flash(1, 3, true);
             if (health < 0f && !isDead)
             {
@@ -47,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Heal(float amount)
+    public void Heal(int amount)
     {
         health = Mathf.Min(health + amount, maxHealth);
         soundPlayer.PlaySound(heal);

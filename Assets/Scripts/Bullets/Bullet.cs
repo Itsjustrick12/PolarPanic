@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb;
     public MagnetizedObj magnet;
     public SpriteRenderer sprite;
-    public float damage = 1f;
+    public int damage = 1;
     public bool reflected = false;
 
     public Sprite blue;
