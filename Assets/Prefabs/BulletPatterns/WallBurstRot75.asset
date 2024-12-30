@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patternBullet: {fileID: 7340907695961219310, guid: 59f01917eda22cb4bae95f054426ee41, type: 3}
   numBullets: 10
-  timeBetweenShots: 0.2
+  timeBetweenShots: 0.15
   rotOffset: 75
   posOffset: 1
   useSourceRotation: 1
