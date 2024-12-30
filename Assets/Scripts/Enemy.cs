@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxHealth = 3f;
     [SerializeField] private SoundClip hit, death;
     [SerializeField] private SoundPlayer soundPlayer;
+    [SerializeField] private GameObject deathEffect;
+
     private float currHealth = 0f;
 
     private Vector2 playerDirection;
@@ -150,7 +152,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         isDead = true;
-        soundPlayer.PlaySound(death, 1, false); // TODO this won't work without a coroutine for the dead robot to stick around
+        Instantiate(deathEffect, transform.position, transform.rotation);
         //Cancel all scheduled bullets bc the enemy died
         StopAllCoroutines();
         /*

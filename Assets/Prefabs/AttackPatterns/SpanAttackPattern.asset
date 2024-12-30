@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ed1915e907abd48bfef0636aca68ee, type: 3}
   m_Name: SpanAttackPattern
   m_EditorClassIdentifier: 
-  attackPattern: []
+  attackPattern:
+  - pattern: {fileID: 11400000, guid: 7c233bd7331a45f4b81f791089df7bb7, type: 2}
+    cooldown: 0.3
+  - pattern: {fileID: 11400000, guid: d2dbf1162a524fc419cce8490a75d23d, type: 2}
+    cooldown: 0.3
+  - pattern: {fileID: 11400000, guid: 5c42b9e91d8e9c440bba57cecbd5af04, type: 2}
+    cooldown: 1.2
   randomOrder: 0
   guaranteeNoRepeats: 1

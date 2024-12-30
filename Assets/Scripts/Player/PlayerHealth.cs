@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public bool invincible = false;
     public SoundClip hurt, death;
     public SoundPlayer soundPlayer;
+    [SerializeField] private GameObject deathEffect;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         isDead = true;
+        Instantiate(deathEffect, transform.position, transform.rotation);
         GameManager.instance.GameOver();
     }
 }
