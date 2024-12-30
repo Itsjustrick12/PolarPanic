@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46284a1963ee2943b595a4e9710dd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 11400000, guid: c8b618139c65c704fb059d0d14db17d9, type: 2}
   soundPlayer: {fileID: 268846579396777597}
   duration: 2
 --- !u!1001 &1150631000002775147

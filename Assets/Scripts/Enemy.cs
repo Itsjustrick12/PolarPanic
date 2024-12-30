@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Sprite white;
 
     [SerializeField] float maxHealth = 3f;
-    [SerializeField] private SoundClip hit, death;
+    [SerializeField] private SoundClip hit, shoot;
     [SerializeField] private SoundPlayer soundPlayer;
     [SerializeField] private GameObject deathEffect;
 
@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
     private Transform player;
 
     private bool isDead = false;
+    public static bool bulletSoundPlayingThisFrame = true;
 
     [SerializeField] GameObject drop = null;
     private void Awake()
@@ -95,6 +96,8 @@ public class Enemy : MonoBehaviour
             Vector3 newScale = new Vector3 (transform.localScale.x*-1, transform.localScale.y, transform.localScale.z);
             transform.localScale = newScale;
         }
+
+        bulletSoundPlayingThisFrame = false;
     }
 
     private void FixedUpdate()
@@ -128,6 +131,11 @@ public class Enemy : MonoBehaviour
         while(shootCooldown <= 0f)
         {
             shootCooldown = attackPattern.FireAttackPattern(ref attackPatternPos, this, shotSpawnPoint, bulletSpeed, bulletPolarity);
+            if (!bulletSoundPlayingThisFrame)
+            {
+                soundPlayer.PlaySound(shoot);
+                bulletSoundPlayingThisFrame = true;
+            }
         }
     }
 
