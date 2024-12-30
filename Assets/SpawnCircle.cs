@@ -18,8 +18,8 @@ public class SpawnCircle : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.instance.paused) return;
-        
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
+
         timer += Time.deltaTime;
 
         if (timer > blinkTime)

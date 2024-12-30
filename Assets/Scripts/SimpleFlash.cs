@@ -55,8 +55,8 @@ public class SimpleFlash : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.paused) return;
-        
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
+
         if (flashRoutine == null && spriteRenderer.color != originalColor)
         {
             spriteRenderer.color = originalColor;

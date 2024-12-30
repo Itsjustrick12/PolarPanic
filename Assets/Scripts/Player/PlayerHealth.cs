@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Update()
     {
-        if (GameManager.instance.paused) return;
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
 
         if (invincible && !isDead && Time.time >= startInvincibility + maxInvincibility)
         {

@@ -95,7 +95,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.paused) return;
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
 
         if (on)
         {
@@ -153,8 +153,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.instance.paused) return;
-        
+        if (GameManager.instance.paused || GameManager.instance.gameOver) return;
+
         if ((numAlive == 0 && currState == SpawnerState.COOLDOWN) && on)
         {
             timer += Time.deltaTime;
