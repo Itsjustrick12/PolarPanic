@@ -13,6 +13,7 @@ public class ShieldCatcher : MonoBehaviour
     [SerializeField] ShieldController shieldController;
     [SerializeField] ChargeBarFlash chargeFlash;
     [SerializeField] float hitChargeAmount = 1f;
+    [SerializeField] SoundClip chargeDown, chargeUp;
     public int polarity = 0;
     //public int curBullets = 0;
     public List<Bullet> bulletSlots = new();
@@ -165,6 +166,7 @@ public class ShieldCatcher : MonoBehaviour
     public void RemoveCharge()
     {
         shieldController.charge -= hitChargeAmount;
+        shieldController.soundPlayer.PlaySound(chargeDown);
         if(shieldController.charge < 0f)
         {
             shieldController.charge = 0f;
