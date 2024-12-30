@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public bool gameOver = false, paused = false;
 
+    public HeartUI heartUI;
+
     public int nuts = 0;
     public SoundClip pickupSound;
 
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        heartUI = FindFirstObjectByType<HeartUI>();
     }
 
     public void Update()
@@ -66,6 +69,10 @@ public class GameManager : MonoBehaviour
         player.GetComponentInChildren<SoundPlayer>().PlaySound(pickupSound);
     }
 
+    public void UpdateHealth(float health)
+    {
+        heartUI.UpdateVisuals(health);
+    }
     public void GameOver()
     {
         AudioManager.instance.Stop();
