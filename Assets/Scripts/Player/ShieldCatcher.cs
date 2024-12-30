@@ -161,4 +161,9 @@ public class ShieldCatcher : MonoBehaviour
             bulletSlots[_removedIndex] = null;
         }
     }
+
+    public void AddCharge()
+    {
+
+    }
 }

@@ -17,5 +17,5 @@ MonoBehaviour:
   range: 80
   rotOffset: 0
   posOffset: 1
-  randomSpread: 0
+  randomSpread: 1
   useSourceRotation: 1
