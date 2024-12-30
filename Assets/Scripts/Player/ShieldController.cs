@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ShieldController : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class ShieldController : MonoBehaviour
 
     private MagnetizedObj magnetizedObj;
 
+    private float charge;
+    public float maxCharge;
+
+    public Slider slider;
+    public Image sliderFill;
+
     void Start()
     {
         magnetizedObj = GetComponent<MagnetizedObj>();
@@ -24,6 +31,9 @@ public class ShieldController : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.position += Vector3.up * radius;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        slider.maxValue = maxCharge;
+        slider.value = maxCharge;
+        charge = maxCharge;
     }
 
     void Update()
@@ -38,19 +48,33 @@ public class ShieldController : MonoBehaviour
         bool _positive = Input.GetMouseButton(0);
         bool _negative = Input.GetMouseButton(1);
 
+        if (!_positive && !_negative && charge < maxCharge)
+        {
+            charge = Mathf.Min(charge + Time.deltaTime, maxCharge);
+        }
+        else if (charge > 0)
+        {
+            charge = Mathf.Max(charge - Time.deltaTime, 0);
+        }
+        slider.value = charge;
+
         int _newPolarity = 0;
-        //Neutral polarity
-        if ((_positive && _negative) || !(_positive || _negative))
+
+        if (charge > 0)
         {
-            _newPolarity = 0;
-        }
-        else if (_positive)
-        {
-            _newPolarity = 1;
-        }
-        else
-        {
-            _newPolarity = -1;
+            //Neutral polarity
+            if ((_positive && _negative) || !(_positive || _negative))
+            {
+                _newPolarity = 0;
+            }
+            else if (_positive)
+            {
+                _newPolarity = 1;
+            }
+            else
+            {
+                _newPolarity = -1;
+            }
         }
 
         if(_newPolarity != polarity)
@@ -77,6 +101,7 @@ public class ShieldController : MonoBehaviour
 
         polarity = _polarity;
         spriteRenderer.color = _newColor;
+        sliderFill.color = _newColor;
         magnetizedObj.SetPolarity(polarity);
     }
 
