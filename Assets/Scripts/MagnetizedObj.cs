@@ -52,7 +52,7 @@ public class MagnetizedObj : MonoBehaviour
 
     public void RemoveMagnetFromNeighborsOnDestroy(MagnetizedObj _destroyedMagnet)
     {
-        Debug.Log($"{gameObject.name} {_destroyedMagnet.name}");
+        //Debug.Log($"{gameObject.name} {_destroyedMagnet.name}");
         neighborMagnets.Remove(_destroyedMagnet);
     }
 
