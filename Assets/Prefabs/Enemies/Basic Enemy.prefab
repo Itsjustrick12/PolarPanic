@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2098869460540230953}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -130,7 +130,7 @@ SpriteRenderer:
   m_SortingLayerID: 562610345
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4200125344545292826, guid: df0db2d0302e44743b9b28b1e1dc4a92, type: 3}
+  m_Sprite: {fileID: -2363063937340210494, guid: 800b06595da4aa64b93a8d3845452aec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -163,9 +163,9 @@ MonoBehaviour:
   shotSpawnPoint: {fileID: 3895987568843787076}
   attackPattern: {fileID: 11400000, guid: 9a43c0bfd61e1a64096ca820eac40fe0, type: 2}
   screenSprite: {fileID: 21830308125414180}
-  red: {fileID: 5156814850014174755, guid: 9be82b60e31640f4b8fa9cdab1da576b, type: 3}
-  blue: {fileID: 1356265042483427029, guid: 9be82b60e31640f4b8fa9cdab1da576b, type: 3}
-  white: {fileID: -3174391233492567891, guid: 9be82b60e31640f4b8fa9cdab1da576b, type: 3}
+  red: {fileID: -3451307935966874941, guid: 31cbb5ced2859cf4a8034a0866991e20, type: 3}
+  blue: {fileID: -8616974608543565196, guid: 31cbb5ced2859cf4a8034a0866991e20, type: 3}
+  white: {fileID: -2531841003294957308, guid: 31cbb5ced2859cf4a8034a0866991e20, type: 3}
   maxHealth: 3
   drop: {fileID: 8695777369659470211, guid: 0859d0563dc2e32429c2762aabec568b, type: 3}
 --- !u!50 &1691007096230775661
@@ -313,7 +313,7 @@ SpriteRenderer:
   m_SortingLayerID: 562610345
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: -1028056164, guid: 81cc05d3b20042f4784e921ca13ac7c5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6745098}
   m_FlipX: 0
   m_FlipY: 0
@@ -321,7 +321,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5094663266802320723
@@ -461,7 +461,7 @@ SpriteRenderer:
   m_SortingLayerID: 562610345
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 5156814850014174755, guid: 9be82b60e31640f4b8fa9cdab1da576b, type: 3}
+  m_Sprite: {fileID: -3451307935966874941, guid: 31cbb5ced2859cf4a8034a0866991e20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
