@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] public Gradient redTrail;
     [SerializeField] public Gradient blueTrail;
+    [SerializeField] private GameObject redDeathEffect, blueDeathEffect;
 
     private void Awake()
     {
@@ -97,7 +98,13 @@ public class Bullet : MonoBehaviour
 
     public void DestroyBullet()
     {
+        if (magnet.GetPolarity() > 0)
+            Instantiate(redDeathEffect, transform.position, transform.rotation);
+        else if (magnet.GetPolarity() < 0)
+            Instantiate(blueDeathEffect, transform.position, transform.rotation);
+
         magnet.OnDestroy?.Invoke(magnet);
+        
         Destroy(gameObject);
     }
 }

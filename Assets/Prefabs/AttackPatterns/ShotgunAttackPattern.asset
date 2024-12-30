@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ed1915e907abd48bfef0636aca68ee, type: 3}
   m_Name: ShotgunAttackPattern
   m_EditorClassIdentifier: 
-  attackPattern: []
-  randomOrder: 0
+  attackPattern:
+  - pattern: {fileID: 11400000, guid: c5f5c5a43f820364da28560b7c1e21df, type: 2}
+    cooldown: 2
+  randomOrder: 1
   guaranteeNoRepeats: 1

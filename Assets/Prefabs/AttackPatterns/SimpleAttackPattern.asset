@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ed1915e907abd48bfef0636aca68ee, type: 3}
   m_Name: SimpleAttackPattern
   m_EditorClassIdentifier: 
-  attackPattern: []
+  attackPattern:
+  - pattern: {fileID: 11400000, guid: 7c233bd7331a45f4b81f791089df7bb7, type: 2}
+    cooldown: 1.5
   randomOrder: 0
   guaranteeNoRepeats: 1

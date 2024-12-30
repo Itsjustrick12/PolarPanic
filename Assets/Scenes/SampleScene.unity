@@ -188,10 +188,10 @@ RectTransform:
   - {fileID: 260855641}
   m_Father: {fileID: 592063725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -155.4, y: 0}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.19866669, y: 1}
+  m_AnchoredPosition: {x: 41.30005, y: 0}
+  m_SizeDelta: {x: 66, y: -250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &391420495
 MonoBehaviour:
@@ -491,10 +491,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 480, y: 270}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -7222,18 +7222,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 314547283024752476, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 314547283024752476, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 314547283024752476, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2233342640212133036, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7243,17 +7231,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 391420495}
     - target: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: maxCharge
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: sliderFill
       value: 
       objectReference: {fileID: 1677233094}
-    - target: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: bounceForce
-      value: 1.8
-      objectReference: {fileID: 0}
     - target: {fileID: 5408514469421593940, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.02
@@ -7292,18 +7272,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5408514469421593940, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898849143292767880, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: polarity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898849143292767880, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8178215634274057646, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

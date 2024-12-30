@@ -238,6 +238,8 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  redDeathEffect: {fileID: 5435681310065623461, guid: e264fcf719c9d7846984d91cea033b27, type: 3}
+  blueDeathEffect: {fileID: 3928988870069486483, guid: 7b4050b06eed79447a1d08b7392b5dbb, type: 3}
 --- !u!114 &1729918457786825786
 MonoBehaviour:
   m_ObjectHideFlags: 0
