@@ -9396,6 +9396,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 391420495}
     - target: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: polarity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: sliderFill
       value: 
       objectReference: {fileID: 1677233094}
@@ -9783,6 +9787,10 @@ PrefabInstance:
       propertyPath: objContainer
       value: 
       objectReference: {fileID: 419816093}
+    - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
+      propertyPath: spawnerSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 906278e34c7663344b56a2cd1538aa97, type: 2}
     - target: {fileID: 8102617587472889435, guid: 178cf00735dcb8e42938d0dbafe7754e, type: 3}
       propertyPath: currDifficulty
       value: 0

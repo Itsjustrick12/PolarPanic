@@ -68,6 +68,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] bool on = false;
     [SerializeField] bool endless = true;
 
+    [SerializeField] SoundPlayer soundPlayer;
+    [SerializeField] SoundClip spawnerSound;
+
     private void Awake()
     {
         if (instance == null)
@@ -99,7 +102,7 @@ public class EnemySpawner : MonoBehaviour
             if ((numAlive == 0 && currState == SpawnerState.READY) && timer > waveDelay)
             {
                 currState = SpawnerState.SPAWNING;
-                Debug.Log("Spawning new wave...");
+                soundPlayer.PlaySound(spawnerSound);
                 SpawnPattern(patterns[0]);
                 patterns.RemoveAt(0);
 

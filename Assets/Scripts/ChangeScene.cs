@@ -13,7 +13,7 @@ public class ChangeScene : MonoBehaviour
     public static bool changingScene = false;
     public static Action changeScene;
 
-    IEnumerator LoadNextScene()
+    public IEnumerator LoadNextScene()
     {
         changingScene = true;
         ScreenWipe.current.WipeIn();

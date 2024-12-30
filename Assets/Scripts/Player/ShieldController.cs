@@ -9,7 +9,7 @@ public class ShieldController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public GameObject pivotObj;
     public float radius;
-    public int polarity = 1;
+    public int polarity = 0;
     [SerializeField] private Collider2D shieldCollider, magnetCollider;
     [SerializeField] float bounceForce = 1.2f;
     [SerializeField] ChargeBarFlash chargeFlash;
@@ -132,13 +132,13 @@ public class ShieldController : MonoBehaviour
     IEnumerator MagMiddle1()
     {
         yield return new WaitForSeconds(4.064f);
-        soundPlayer.PlaySound(magMiddle1);
+        soundPlayer.PlaySound(magMiddle1, 1, true);
     }
 
     IEnumerator MagMiddle2()
     {
         yield return new WaitForSeconds(4.064f);
-        soundPlayer.PlaySound(magMiddle2);
+        soundPlayer.PlaySound(magMiddle2, 1, true);
     }
 
     private void SetPolarity(int _polarity)

@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivotObj: {fileID: 0}
   radius: 1
-  polarity: 1
+  polarity: 0
   shieldCollider: {fileID: 6139126103777828128}
   magnetCollider: {fileID: 8858986439827561102}
   bounceForce: 1.8
