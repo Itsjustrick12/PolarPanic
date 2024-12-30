@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dodgerollSpeedMultiplier = 1.3f;
     [SerializeField] private ShieldController shield;
     [SerializeField] Animator anim;
+    [SerializeField] private SoundPlayer soundPlayer;
+    [SerializeField] private SoundClip roll;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -71,8 +73,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && !dodgeroll && !(moveX == 0 && moveY == 0))
         {
-
             dodgeroll = true;
+            soundPlayer.PlaySound(roll);
 
             ResetAnimBools();
             anim.SetBool("Roll",true);
