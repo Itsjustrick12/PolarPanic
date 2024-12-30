@@ -7020,6 +7020,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 314547283024752476, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 314547283024752476, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 314547283024752476, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2233342640212133036, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
       propertyPath: m_Name
       value: Player

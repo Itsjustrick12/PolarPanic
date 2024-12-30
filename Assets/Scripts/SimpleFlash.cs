@@ -10,6 +10,7 @@ public class SimpleFlash : MonoBehaviour
 
     [Tooltip("Material to switch to during the flash.")]
     [SerializeField] private Material flashMaterial;
+    [SerializeField] private Color flashColor;
     [Tooltip("Other flashes to trigger when this one is triggered.")]
     [SerializeField] private List<SimpleFlash> alsoFlash = new List<SimpleFlash>();
     [Tooltip("Force using non-solid flash. For when a sprite may have color set to black by default.")]
@@ -84,7 +85,8 @@ public class SimpleFlash : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             // Swap to the flashMaterial.
-            spriteRenderer.color = newColor;
+            //spriteRenderer.color = newColor;
+            spriteRenderer.color = flashColor;
 
             // Pause the execution of this function for "duration" seconds.
             yield return new WaitForSeconds(duration / amount / 2);
@@ -104,13 +106,15 @@ public class SimpleFlash : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             // Swap to the flashMaterial.
-            spriteRenderer.material = flashMaterial;
+            //spriteRenderer.material = flashMaterial;
+            spriteRenderer.color = flashColor;
 
             // Pause the execution of this function for "duration" seconds.
             yield return new WaitForSecondsRealtime(duration / amount / 2);
 
             // After the pause, swap back to the original material.
-            spriteRenderer.material = originalMaterial;
+            //spriteRenderer.material = originalMaterial;
+            spriteRenderer.color = originalColor;
 
             yield return new WaitForSecondsRealtime(duration / amount / 2);
         }

@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 03b080d4f56a6da4f99725d553621fdf, type: 2}
+  flashColor: {r: 0.84313726, g: 0.24313726, b: 0.24313726, a: 1}
   alsoFlash:
   - {fileID: 5094663266802320723}
   - {fileID: 2709419921922745864}
@@ -337,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 03b080d4f56a6da4f99725d553621fdf, type: 2}
+  flashColor: {r: 0.84313726, g: 0.24313726, b: 0.24313726, a: 1}
   alsoFlash: []
   forceNonSolidFlash: 1
   spriteRenderer: {fileID: 875034821120226156}
@@ -485,6 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 03b080d4f56a6da4f99725d553621fdf, type: 2}
+  flashColor: {r: 0.84313726, g: 0.24313726, b: 0.24313726, a: 1}
   alsoFlash: []
   forceNonSolidFlash: 1
   spriteRenderer: {fileID: 21830308125414180}

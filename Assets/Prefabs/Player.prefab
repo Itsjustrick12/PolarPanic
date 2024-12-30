@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 8bce05fcc175ace4fbdbdb30444b2e52, type: 2}
+  flashColor: {r: 0.8396226, g: 0.2415895, b: 0.2415895, a: 1}
   alsoFlash: []
   forceNonSolidFlash: 0
   spriteRenderer: {fileID: 314547283024752476}
