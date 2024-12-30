@@ -66,6 +66,7 @@ MonoBehaviour:
   magStart2: {fileID: 11400000, guid: b38ffff3fb1b1fe4ea598b705532a20c, type: 2}
   magMiddle2: {fileID: 11400000, guid: 222305235e274524c8038f4c598dcfad, type: 2}
   magEnd2: {fileID: 11400000, guid: 6799d4fa9b0ede147baa9ee41a3687cd, type: 2}
+  chargeUp: {fileID: 11400000, guid: a21364b555c8c5344ad9dccb8df3b90b, type: 2}
   charge: 0
   maxCharge: 12
   slider: {fileID: 0}
@@ -284,7 +285,6 @@ MonoBehaviour:
   chargeFlash: {fileID: 0}
   hitChargeAmount: 1
   chargeDown: {fileID: 11400000, guid: 480d875b9b3be9a46a08ef4a165ab28b, type: 2}
-  chargeUp: {fileID: 11400000, guid: a21364b555c8c5344ad9dccb8df3b90b, type: 2}
   polarity: 1
   bulletSlots: []
 --- !u!61 &3021209326719244024

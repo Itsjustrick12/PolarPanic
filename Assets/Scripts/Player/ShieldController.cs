@@ -15,7 +15,7 @@ public class ShieldController : MonoBehaviour
     [SerializeField] ChargeBarFlash chargeFlash;
     [SerializeField] float hitChargeAmount = 1f;
     [SerializeField] public SoundPlayer soundPlayer;
-    [SerializeField] private SoundClip magStart1, magMiddle1, magEnd1, magStart2, magMiddle2, magEnd2;
+    [SerializeField] private SoundClip magStart1, magMiddle1, magEnd1, magStart2, magMiddle2, magEnd2, chargeUp;
     private Coroutine m1routine, m2routine;
 
     private Transform pivot;
@@ -242,6 +242,7 @@ public class ShieldController : MonoBehaviour
 
     public void AddCharge()
     {
+        soundPlayer.PlaySound(chargeUp);
         chargeFlash.AddCharge();
         charge += hitChargeAmount;
         if(charge >= maxCharge)

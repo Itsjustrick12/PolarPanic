@@ -53,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(float amount)
     {
         health = Mathf.Min(health + amount, maxHealth);
+        GameManager.instance.UpdateHealth(health);
         soundPlayer.PlaySound(heal);
     }
 
