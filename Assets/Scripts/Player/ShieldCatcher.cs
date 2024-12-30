@@ -70,8 +70,9 @@ public class ShieldCatcher : MonoBehaviour
             }
 
             _bullet.reflected = true;
+            _bullet.physicsBody.excludeLayers = 0;
 
-            if (polarity == _bullet.magnet.GetPolarity())
+            if (polarity == 0 || polarity == _bullet.magnet.GetPolarity())
             {
                 //Try to destroy bullet in vortex
                 int _bulletToNeutralize = bulletSlots.FindIndex((x) => x != null);
@@ -127,8 +128,13 @@ public class ShieldCatcher : MonoBehaviour
             bulletSlots[i].magnet.OnDestroy -= RemoveBulletFromSlotsOnDestroy;
 
             //Shoot off in direction of travel
+            /*
             Vector3 _newBulletDir = Quaternion.Euler(0f, 0f, i * _between + (rotation + 90f) * _rotDir) * Vector3.right;
             bulletSlots[i].rb.linearVelocity = _newBulletDir * launchSpeed;
+            */
+
+            //Shoot of in direction of shield facing
+            bulletSlots[i].rb.linearVelocity = shieldController.transform.right * launchSpeed;
 
             //Remove from list
             bulletSlots[i] = null;
