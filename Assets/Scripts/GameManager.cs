@@ -77,16 +77,27 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player Has Died");
     }
 
+    // TODO @Rick call this from Game Over menu button
     public void Retry()
     {
         gameOver = false;
         if (!ChangeScene.changingScene)
         {
-            StartCoroutine(ReloadScene());
+            StartCoroutine(LoadScene("SampleScene"));
         }
     }
 
-    IEnumerator ReloadScene()
+    // TODO @Rick call this from Game Over menu button
+    public void ToMenu()
+    {
+        gameOver = false;
+        if (!ChangeScene.changingScene)
+        {
+            StartCoroutine(LoadScene("MainMenu"));
+        }
+    }
+
+    IEnumerator LoadScene(string scene)
     {
         ScreenWipe.current.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
         ChangeScene.changingScene = true;
@@ -94,10 +105,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         ScreenWipe.current.GetComponent<Animator>().updateMode = AnimatorUpdateMode.Normal;
         Time.timeScale = 1;
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(scene);
         ChangeScene.changingScene = false;
     }
 
+    // TODO @Rick call this from on screen pause button?
     public void Pause()
     {
         paused = true;
@@ -112,6 +124,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // TODO @Rick call this from pause menu
     public void Unpause()
     {
         paused = false;
