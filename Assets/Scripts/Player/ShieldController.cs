@@ -50,7 +50,7 @@ public class ShieldController : MonoBehaviour
 
         if (!_positive && !_negative && charge < maxCharge)
         {
-            charge = Mathf.Min(charge + Time.deltaTime, maxCharge);
+            charge = Mathf.Min(charge + Time.deltaTime * 2, maxCharge);
         }
         else if (charge > 0)
         {
