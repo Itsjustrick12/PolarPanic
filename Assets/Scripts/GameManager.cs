@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     public void UpdateNuts(int amt)
     {
         nuts += amt;
-        scrapUI.UpdateScrap(amt);
+        scrapUI.UpdateScrap(nuts);
         player.GetComponentInChildren<SoundPlayer>().PlaySound(pickupSound);
     }
 

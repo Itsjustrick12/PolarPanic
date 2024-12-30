@@ -658,6 +658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quit Button
       objectReference: {fileID: 0}
+    - target: {fileID: 7193019828622560036, guid: 226964df5b1963942b7a42e6fcdb05c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9131495092105826022, guid: 226964df5b1963942b7a42e6fcdb05c4, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 

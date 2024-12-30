@@ -1291,12 +1291,12 @@ RectTransform:
   - {fileID: 350735176}
   - {fileID: 559693946}
   - {fileID: 611170452}
-  - {fileID: 573850368}
   - {fileID: 276515308}
   - {fileID: 428550111}
   - {fileID: 896460196}
   - {fileID: 1351227108}
   - {fileID: 676429069}
+  - {fileID: 573850368}
   - {fileID: 835650277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
