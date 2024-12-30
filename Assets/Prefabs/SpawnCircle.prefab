@@ -126,3 +126,5 @@ MonoBehaviour:
   blinkTime: 1.5
   obj: {fileID: 2098869460540230953, guid: c242c4942e613cf48a675c8d1d5235cf, type: 3}
   offset: {x: 0, y: 0}
+  minCooldown: 0.1
+  maxCooldown: 2

@@ -7,6 +7,8 @@ public class SpawnCircle : MonoBehaviour
     public GameObject obj;
     public Vector2 offset;
     private SpriteRenderer sprite;
+    public float minCooldown = 0.1f;
+    public float maxCooldown = 0.4f;
 
     public SpawnCircle(float blinkTime, GameObject obj)
     {
@@ -26,7 +28,10 @@ public class SpawnCircle : MonoBehaviour
 
     public void SpawnAndDestroy()
     {
-        GameObject.Instantiate(obj, transform.position, Quaternion.identity);
+        if(Instantiate(obj, transform.position, Quaternion.identity).TryGetComponent(out Enemy e))
+        {
+            e.shootCooldown = Random.Range(minCooldown, maxCooldown);
+        }
 
         Destroy(gameObject);
     }
