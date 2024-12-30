@@ -41,9 +41,9 @@ MonoBehaviour:
     cooldown: 1.5
   - pattern: {fileID: 11400000, guid: 4174112c6f834dd4e80e27f9d9382fec, type: 2}
     cooldown: 0
-  - pattern: {fileID: 11400000, guid: 4174112c6f834dd4e80e27f9d9382fec, type: 2}
+  - pattern: {fileID: 11400000, guid: fec432e0e11114a41804443b8f1e4a14, type: 2}
     cooldown: 0
-  - pattern: {fileID: 11400000, guid: 4174112c6f834dd4e80e27f9d9382fec, type: 2}
-    cooldown: 0
+  - pattern: {fileID: 11400000, guid: cefa1133c2e86c5448b57e4407f12419, type: 2}
+    cooldown: 1
   randomOrder: 0
   guaranteeNoRepeats: 1

@@ -15,6 +15,6 @@ MonoBehaviour:
   patternBullet: {fileID: 7340907695961219310, guid: 59f01917eda22cb4bae95f054426ee41, type: 3}
   numBullets: 3
   timeBetweenShots: 0.2
-  rotOffset: 30
+  rotOffset: -30
   posOffset: 1
   useSourceRotation: 1
