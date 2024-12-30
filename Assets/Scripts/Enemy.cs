@@ -164,15 +164,15 @@ public class Enemy : MonoBehaviour
 
         if (polarity == 0)
         {
-            screenSprite.sprite = white;
+            screenSprite.color = Color.white;
         }
         else if (polarity > 0)
         {
-            screenSprite.sprite = red;
+            screenSprite.color = new Color(229/255f, 45 / 255f, 64 / 255f);
         }
         else
         {
-            screenSprite.sprite = blue;
+            screenSprite.color = new Color(25 / 255f, 186 / 255f, 255 / 255f);
         }
     }
 

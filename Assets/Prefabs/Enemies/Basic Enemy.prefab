@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2098869460540230953}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0625, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -163,9 +163,9 @@ MonoBehaviour:
   shotSpawnPoint: {fileID: 3895987568843787076}
   attackPattern: {fileID: 11400000, guid: 9a43c0bfd61e1a64096ca820eac40fe0, type: 2}
   screenSprite: {fileID: 21830308125414180}
-  red: {fileID: -3451307935966874941, guid: 31cbb5ced2859cf4a8034a0866991e20, type: 3}
-  blue: {fileID: -8616974608543565196, guid: 31cbb5ced2859cf4a8034a0866991e20, type: 3}
-  white: {fileID: -2531841003294957308, guid: 31cbb5ced2859cf4a8034a0866991e20, type: 3}
+  red: {fileID: -8220256635514738991, guid: 4612241c9c3c33546b63e8a4dae1dff3, type: 3}
+  blue: {fileID: 5090302077561202693, guid: 4612241c9c3c33546b63e8a4dae1dff3, type: 3}
+  white: {fileID: 4566105103548505356, guid: 4612241c9c3c33546b63e8a4dae1dff3, type: 3}
   maxHealth: 3
   drop: {fileID: 8695777369659470211, guid: 0859d0563dc2e32429c2762aabec568b, type: 3}
 --- !u!50 &1691007096230775661
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098869460540230953}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f933be46614e29c47993db2c7f1fbfe2, type: 3}
   m_Name: 
@@ -461,8 +461,8 @@ SpriteRenderer:
   m_SortingLayerID: 562610345
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -3451307935966874941, guid: 31cbb5ced2859cf4a8034a0866991e20, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 3901931569554049330, guid: fdba577a72ce9fe4f8f1d54f619409c5, type: 3}
+  m_Color: {r: 0.8980392, g: 0.1764706, b: 0.2509804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
