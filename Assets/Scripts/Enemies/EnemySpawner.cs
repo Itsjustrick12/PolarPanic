@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Transform objContainer;
 
     [SerializeField] GameObject spawnObj;
-    [SerializeField] List<GameObject> enemies;
+    //[SerializeField] List<GameObject> enemies;
 
     //Used for alligning enemies to the 16x16 grid positions
     [SerializeField] float offset = 0.5f;
@@ -493,10 +493,12 @@ public class EnemySpawner : MonoBehaviour
         {
             spawnPoint.Set(spawnPoint.x + offset, spawnPoint.y - offset, 0);
         }
-        GameObject temp = GameObject.Instantiate(obj, spawnPoint, Quaternion.identity);
-        temp.transform.parent = objContainer;
+        //GameObject temp = GameObject.Instantiate(obj, spawnPoint, Quaternion.identity);
+        //temp.transform.parent = objContainer;
 
-        enemies.Add(temp);
+        //test for spawn circle
+        GameObject spawnCircle = GameObject.Instantiate(spawnObj, spawnPoint, Quaternion.identity);
+        spawnCircle.GetComponent<SpawnCircle>().SetObj(obj);
         numAlive++;
     }
 
