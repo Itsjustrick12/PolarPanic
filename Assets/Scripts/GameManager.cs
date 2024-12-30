@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject player;
 
-    public HeartsUI heartUI;
-
     public int nuts = 0;
     public SoundClip pickupSound;
 
@@ -21,8 +19,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        heartUI = FindFirstObjectByType<HeartsUI>();
     }
 
     public void HealPlayer(int amt)
@@ -35,11 +31,6 @@ public class GameManager : MonoBehaviour
     {
         nuts += amt;
         player.GetComponentInChildren<SoundPlayer>().PlaySound(pickupSound);
-    }
-
-    public void UpdateHealth(int amt)
-    {
-        heartUI.UpdateVisuals(amt);
     }
 
     public void GameOver()
