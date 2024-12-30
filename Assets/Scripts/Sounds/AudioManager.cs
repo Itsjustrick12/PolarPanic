@@ -129,10 +129,10 @@ public class AudioManager : MonoBehaviour
         //Manages looping tracks
         if (firstSet)
         {
-            if (BGM1[activePlayer].time >= loopPointSeconds)
+            if (BGM1[activePlayer].clip != null && BGM1[activePlayer].time >= loopPointSeconds)
             {
-                BGM2[activePlayer].Stop();
-                BGM2[activePlayer].time = 0;
+                BGM1[activePlayer].Stop();
+                BGM1[activePlayer].time = 0;
                 activePlayer = 1 - activePlayer;
                 if (currentSong != null)
                     BGM1[activePlayer].clip = currentSong.GetClip();
@@ -143,7 +143,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            if (BGM2[activePlayer].time >= loopPointSeconds)
+            if (BGM2[activePlayer].clip != null && BGM2[activePlayer].time >= loopPointSeconds)
             {
                 BGM2[activePlayer].Stop();
                 BGM2[activePlayer].time = 0;

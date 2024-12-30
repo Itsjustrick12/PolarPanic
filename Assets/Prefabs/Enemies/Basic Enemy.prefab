@@ -167,6 +167,9 @@ MonoBehaviour:
   blue: {fileID: 5090302077561202693, guid: 4612241c9c3c33546b63e8a4dae1dff3, type: 3}
   white: {fileID: 4566105103548505356, guid: 4612241c9c3c33546b63e8a4dae1dff3, type: 3}
   maxHealth: 3
+  hit: {fileID: 11400000, guid: 5e371e07239eac44cbcd981d61f5b4c8, type: 2}
+  death: {fileID: 11400000, guid: 3fed9d25af91eb145bf3a18c53498951, type: 2}
+  soundPlayer: {fileID: 6953901315997729649}
   drop: {fileID: 8695777369659470211, guid: 0859d0563dc2e32429c2762aabec568b, type: 3}
 --- !u!50 &1691007096230775661
 Rigidbody2D:
@@ -548,6 +551,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31f61b2904bb9a741aa14e2b2976413a, type: 3}
+--- !u!114 &6953901315997729649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 886362805277679126, guid: 31f61b2904bb9a741aa14e2b2976413a, type: 3}
+  m_PrefabInstance: {fileID: 7840140372324605287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c645889cf1ca84b8b4eca6f2938f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7247310838333358692 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 603017179443076867, guid: 31f61b2904bb9a741aa14e2b2976413a, type: 3}

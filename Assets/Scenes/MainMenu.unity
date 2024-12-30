@@ -566,28 +566,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1484223826}
-  - component: {fileID: 1484223825}
+  - component: {fileID: 1484223827}
   m_Layer: 0
-  m_Name: MusicOnLoad (TEMP)
+  m_Name: MusicOnLoad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1484223825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484223824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e2625dd5de6172439ab6cc98292415b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newTrack: {fileID: 11400000, guid: ec98a99c19c668b418da0942ffdc2e8e, type: 2}
-  newArea: 1
 --- !u!4 &1484223826
 Transform:
   m_ObjectHideFlags: 0
@@ -603,6 +589,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1484223827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484223824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfdb2423ddea734ba4cc08326a8ea85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newTrack: {fileID: 0}
+  newArea: 1
+  delay: 0.25
+  clips:
+  - {fileID: 11400000, guid: ec98a99c19c668b418da0942ffdc2e8e, type: 2}
+  - {fileID: 11400000, guid: d1be7ceb9a30aa64abbada8c5a8dc075, type: 2}
 --- !u!1 &1496665144
 GameObject:
   m_ObjectHideFlags: 0
