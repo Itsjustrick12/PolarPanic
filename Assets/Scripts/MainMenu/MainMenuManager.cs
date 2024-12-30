@@ -16,11 +16,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void Start()
     {
-        // ScreenWipe.current.PostWipe += PlayMenuMusic;
+        ScreenWipe.current.PostWipe += PlayMenuMusic;
     }
 
-    // public void PlayMenuMusic()
-    // {
-    //     AudioManager.instance.ChangeBGM(menuMusic);
-    // }
+   public void PlayMenuMusic()
+   {
+        AudioManager.instance.ChangeBGM(menuMusic);
+   }
 }

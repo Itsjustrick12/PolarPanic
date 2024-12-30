@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public int nuts = 0;
     public SoundClip pickupSound;
 
+    public bool gameScene = true;
+
     private void Awake()
     {
         if (instance == null)
@@ -27,9 +29,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        heartUI = FindFirstObjectByType<HeartUI>();
-        darkScreen.SetActive(false);
-        PauseScreen.SetActive(false);
+
+        if (gameScene)
+        {
+            heartUI = FindFirstObjectByType<HeartUI>();
+            darkScreen.SetActive(false);
+            PauseScreen.SetActive(false);
+        }
     }
 
     public void Update()
