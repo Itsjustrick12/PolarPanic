@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public bool gameOver = false, paused = false;
 
+    [SerializeField] GameObject PauseScreen;
+    [SerializeField] GameObject darkScreen;
+
     public HeartUI heartUI;
 
     public int nuts = 0;
@@ -25,6 +28,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         heartUI = FindFirstObjectByType<HeartUI>();
+        darkScreen.SetActive(false);
+        PauseScreen.SetActive(false);
     }
 
     public void Update()
@@ -83,7 +88,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         if (!ChangeScene.changingScene)
         {
-            StartCoroutine(LoadScene("SampleScene"));
+            StartCoroutine(LoadScene("GameScene"));
         }
     }
 
@@ -121,6 +126,9 @@ public class GameManager : MonoBehaviour
             {
                 source.Pause();
             }
+            PauseScreen.SetActive(true);
+            darkScreen.SetActive(true);
+
         }
     }
 
@@ -136,6 +144,8 @@ public class GameManager : MonoBehaviour
             {
                 source.UnPause();
             }
+            PauseScreen.SetActive(false);
+            darkScreen.SetActive(false);
         }
         
     }

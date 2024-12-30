@@ -29,6 +29,7 @@ public class ScreenWipe : MonoBehaviour
     public void WipeOut()
     {
         GetComponent<Animator>().SetTrigger("WipeOut");
+        ScreenBlocker.raycastTarget = false;
     }
 
     public void CallPostWipe()
