@@ -14,7 +14,7 @@ public class ShieldController : MonoBehaviour
     [SerializeField] float bounceForce = 1.2f;
     [SerializeField] ChargeBarFlash chargeFlash;
     [SerializeField] float hitChargeAmount = 1f;
-    [SerializeField] private SoundPlayer soundPlayer;
+    [SerializeField] public SoundPlayer soundPlayer;
     [SerializeField] private SoundClip magStart1, magMiddle1, magEnd1, magStart2, magMiddle2, magEnd2;
     private Coroutine m1routine, m2routine;
 

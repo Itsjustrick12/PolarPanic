@@ -283,6 +283,8 @@ MonoBehaviour:
   shieldController: {fileID: 5373957081925638998}
   chargeFlash: {fileID: 0}
   hitChargeAmount: 1
+  chargeDown: {fileID: 11400000, guid: 480d875b9b3be9a46a08ef4a165ab28b, type: 2}
+  chargeUp: {fileID: 11400000, guid: a21364b555c8c5344ad9dccb8df3b90b, type: 2}
   polarity: 1
   bulletSlots: []
 --- !u!61 &3021209326719244024
