@@ -11,10 +11,8 @@ public class ShieldCatcher : MonoBehaviour
     [SerializeField] public float launchSpeed = 8f;
     [SerializeField] public Collider2D vortexCatcher;
     [SerializeField] ShieldController shieldController;
-    [SerializeField] RawImage chargeFlash;
-    [SerializeField] float chargeDisappearTime = 0.4f;
-    [SerializeField] float chargeAmount = 1f;
-    float chargeTime = 0f;
+    [SerializeField] ChargeBarFlash chargeFlash;
+    [SerializeField] float hitChargeAmount = 1f;
     public int polarity = 0;
     //public int curBullets = 0;
     public List<Bullet> bulletSlots = new();
@@ -32,15 +30,6 @@ public class ShieldCatcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            chargeTime = chargeDisappearTime;
-        }
-
-        chargeTime -= Time.deltaTime;
-        chargeFlash.color = new Color(185f/ 255f, 124f / 255f, 1f, chargeTime / chargeDisappearTime);
-        //chargeFlash.color = new Color(1f, 216f / 255f, 119f / 255f, chargeTime / chargeDisappearTime);
-
         rotation += Time.deltaTime * vortexRotationSpeed;
         rotation %= 360f;
 
@@ -76,7 +65,7 @@ public class ShieldCatcher : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Bullet _bullet))
         {
-            if (bulletSlots.Contains(_bullet))
+            if (bulletSlots.Contains(_bullet) || polarity == 0)
             {
                 return;
             }
@@ -84,11 +73,16 @@ public class ShieldCatcher : MonoBehaviour
             _bullet.reflected = true;
             _bullet.physicsBody.excludeLayers = 0;
 
-            if (polarity == 0 || polarity == _bullet.magnet.GetPolarity())
+            if (polarity == _bullet.magnet.GetPolarity())
             {
                 //Try to destroy bullet in vortex
-                int _bulletToNeutralize = bulletSlots.FindIndex((x) => x != null);
+                //int _bulletToNeutralize = bulletSlots.FindIndex((x) => x != null);
 
+                //Charge bullet
+                RemoveCharge();
+                _bullet.DestroyBullet();
+
+                /*
                 if (_bulletToNeutralize == -1)
                 {
                     //No bullets, bounce away?
@@ -99,6 +93,7 @@ public class ShieldCatcher : MonoBehaviour
                     bulletSlots[_bulletToNeutralize].DestroyBullet();
                     _bullet.DestroyBullet();
                 }
+                */
             }
             else
             {
@@ -109,6 +104,9 @@ public class ShieldCatcher : MonoBehaviour
                 if(_openSlot == -1)
                 {
                     //What do we do?
+                    //We CHARGE!
+                    RemoveCharge();
+                    _bullet.DestroyBullet();
                 }
                 else
                 {
@@ -162,8 +160,14 @@ public class ShieldCatcher : MonoBehaviour
         }
     }
 
-    public void AddCharge()
+    public void RemoveCharge()
     {
+        shieldController.charge -= hitChargeAmount;
+        if(shieldController.charge < 0f)
+        {
+            shieldController.charge = 0f;
+        }
 
+        chargeFlash.RemoveCharge();
     }
 }

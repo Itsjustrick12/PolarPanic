@@ -11,12 +11,14 @@ public class ShieldController : MonoBehaviour
     public int polarity = 1;
     [SerializeField] private Collider2D shieldCollider, magnetCollider;
     [SerializeField] float bounceForce = 1.2f;
+    [SerializeField] ChargeBarFlash chargeFlash;
+    [SerializeField] float hitChargeAmount = 1f;
 
     private Transform pivot;
 
     private MagnetizedObj magnetizedObj;
 
-    private float charge;
+    public float charge;
     public float maxCharge;
 
     public Slider slider;
@@ -136,6 +138,23 @@ public class ShieldController : MonoBehaviour
             {
                 _hitBullet.reflected = true;
                 _hitBullet.physicsBody.excludeLayers = 0;
+
+                if (polarity == 0)
+                {
+                    //Neutral shield, charge!
+                    AddCharge();
+                    _hitBullet.DestroyBullet();
+                }
+                else
+                {
+                    //Both polarized, bounce!
+                    if (Vector3.Dot(_hitBullet.rb.linearVelocity, transform.right) <= 0)
+                    {
+                        _hitBullet.rb.linearVelocity = bounceForce * (new Vector3(_hitBullet.rb.linearVelocity.x, _hitBullet.rb.linearVelocity.y, 0f) - 2f * Vector3.Dot(_hitBullet.rb.linearVelocity, transform.right) * transform.right);
+                    }
+                }
+
+                /*
                 if (polarity == -_hitBullet.magnet.GetPolarity())
                 {
                     //Opposite polarities, stick!
@@ -148,6 +167,7 @@ public class ShieldController : MonoBehaviour
                         _hitBullet.rb.linearVelocity = bounceForce * (new Vector3(_hitBullet.rb.linearVelocity.x, _hitBullet.rb.linearVelocity.y, 0f) - 2f * Vector3.Dot(_hitBullet.rb.linearVelocity, transform.right) * transform.right);
                     }
                 }
+                */
             }
 
             //Damage(1); // technically we could make some bullets do greater damage here, hmm
@@ -159,5 +179,16 @@ public class ShieldController : MonoBehaviour
         spriteRenderer.enabled = active;
         magnetCollider.enabled = active;
         shieldCollider.enabled = active;
+    }
+
+
+    public void AddCharge()
+    {
+        chargeFlash.AddCharge();
+        charge += hitChargeAmount;
+        if(charge >= maxCharge)
+        {
+            charge = maxCharge;
+        }
     }
 }
