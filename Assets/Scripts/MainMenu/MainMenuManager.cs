@@ -14,6 +14,8 @@ public class MainMenuManager : MonoBehaviour
     public static bool inMainMenu = false;
     public MusicClip menuMusic, menuMusic2;
     public GameObject CreditsPanel;
+    public SoundPlayer soundPlayer;
+    public SoundClip buttonClick, buttonBack;
 
     public void Awake()
     {
@@ -31,11 +33,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void OpenCredits()
     {
+        soundPlayer.PlaySound(buttonClick);
         CreditsPanel.SetActive(true);
     }
 
     public void CloseCredits()
     {
+        soundPlayer.PlaySound(buttonBack);
         CreditsPanel.SetActive(false);
     }
 }

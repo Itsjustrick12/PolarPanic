@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
     public WaveUI waveUI;
 
     public int nuts = 0;
-    public SoundClip pickupSound;
+    public SoundClip pickupSound, buttonClick;
+    public SoundPlayer soundPlayer;
 
     public bool gameScene = true;
 
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
     // TODO @Rick call this from Game Over menu button
     public void Retry()
     {
+        soundPlayer.PlaySound(buttonClick);
         gameOver = false;
         MainMenuManager.inMainMenu = false;
         if (!ChangeScene.changingScene)
@@ -120,6 +122,7 @@ public class GameManager : MonoBehaviour
     // TODO @Rick call this from Game Over menu button
     public void ToMenu()
     {
+        soundPlayer.PlaySound(buttonClick);
         gameOver = false;
         if (!ChangeScene.changingScene)
         {
@@ -156,6 +159,12 @@ public class GameManager : MonoBehaviour
             darkScreen.SetActive(true);
 
         }
+    }
+
+    public void UnpauseButton()
+    {
+        soundPlayer.PlaySound(buttonClick);
+        Unpause();
     }
 
     // TODO @Rick call this from pause menu

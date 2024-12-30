@@ -4,6 +4,6 @@ public class UnpauseButton : MonoBehaviour
 {
     public void Unpause()
     {
-        GameManager.instance.Unpause();
+        GameManager.instance.UnpauseButton();
     }
 }
