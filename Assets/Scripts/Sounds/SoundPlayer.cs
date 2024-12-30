@@ -189,15 +189,15 @@ public class SoundPlayer : MonoBehaviour
         }
     }
 
-    void CleanSounds()
+    public void CleanSounds()
     {
         foreach (AudioSource source in sources)
         {
             if (!source.isPlaying)
             {
+                source.time = 0;
                 source.Stop();
                 source.clip = null;
-                source.time = 0;
             }
         }
     }

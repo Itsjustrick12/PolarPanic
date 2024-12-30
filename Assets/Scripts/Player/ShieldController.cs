@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -13,6 +14,9 @@ public class ShieldController : MonoBehaviour
     [SerializeField] float bounceForce = 1.2f;
     [SerializeField] ChargeBarFlash chargeFlash;
     [SerializeField] float hitChargeAmount = 1f;
+    [SerializeField] private SoundPlayer soundPlayer;
+    [SerializeField] private SoundClip magStart1, magMiddle1, magEnd1, magStart2, magMiddle2, magEnd2;
+    private Coroutine m1routine, m2routine;
 
     private Transform pivot;
 
@@ -81,8 +85,60 @@ public class ShieldController : MonoBehaviour
 
         if(_newPolarity != polarity)
         {
+            if (_newPolarity == 0)
+            {
+                if (polarity == -1)
+                {
+                    if (m1routine != null)
+                        StopCoroutine(m1routine);
+                    soundPlayer.EndSound(magStart1);
+                    soundPlayer.EndSound(magMiddle1);
+                    soundPlayer.PlaySound(magEnd1);
+                }
+                else
+                {
+                    if (m2routine != null)
+                        StopCoroutine(m2routine);
+                    soundPlayer.EndSound(magStart2);
+                    soundPlayer.EndSound(magMiddle2);
+                    soundPlayer.PlaySound(magEnd2);
+                }
+            }
+            else
+            {
+                if (_newPolarity == -1)
+                {
+                    if (m1routine != null)
+                        StopCoroutine(m1routine);
+                    soundPlayer.EndSound(magEnd1);
+                    soundPlayer.EndSound(magMiddle1);
+                    soundPlayer.PlaySound(magStart1);
+                    m1routine = StartCoroutine(MagMiddle1());
+                }
+                else
+                {
+                    if (m2routine != null)
+                        StopCoroutine(m2routine);
+                    soundPlayer.EndSound(magEnd2);
+                    soundPlayer.EndSound(magMiddle2);
+                    soundPlayer.PlaySound(magStart2);
+                    m2routine = StartCoroutine(MagMiddle2());
+                }
+            }
             SetPolarity(_newPolarity);
         }
+    }
+
+    IEnumerator MagMiddle1()
+    {
+        yield return new WaitForSeconds(4.064f);
+        soundPlayer.PlaySound(magMiddle1);
+    }
+
+    IEnumerator MagMiddle2()
+    {
+        yield return new WaitForSeconds(4.064f);
+        soundPlayer.PlaySound(magMiddle2);
     }
 
     private void SetPolarity(int _polarity)
