@@ -65,13 +65,13 @@ public class ShieldController : MonoBehaviour
         switch (_polarity)
         {
             case -1:
-                _newColor = Color.blue;
+                _newColor = new Color(25 / 255f, 186 / 255f, 255 / 255f);
                 break;
             case 0:
                 _newColor = Color.gray;
                 break;
             case 1:
-                _newColor = Color.red;
+                _newColor = new Color(229 / 255f, 45 / 255f, 64 / 255f);
                 break;
         }
 

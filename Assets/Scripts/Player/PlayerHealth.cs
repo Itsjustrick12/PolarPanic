@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
         if ( !invincible )
         {
             health -= damage;
+            GetComponent<SimpleFlash>().Flash(1, 3, true);
             if (health < 0f && !isDead)
             {
                 Die();
