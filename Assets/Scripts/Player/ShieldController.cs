@@ -48,9 +48,9 @@ public class ShieldController : MonoBehaviour
         bool _positive = Input.GetMouseButton(0);
         bool _negative = Input.GetMouseButton(1);
 
-        if (!_positive && !_negative && charge < maxCharge)
+        if (((_positive && _negative) || !(_positive || _negative)) && charge < maxCharge)
         {
-            charge = Mathf.Min(charge + Time.deltaTime * 2, maxCharge);
+            charge = Mathf.Min(charge + Time.deltaTime * 2f, maxCharge);
         }
         else if (charge > 0)
         {

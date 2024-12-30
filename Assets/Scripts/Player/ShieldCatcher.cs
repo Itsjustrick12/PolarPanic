@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShieldCatcher : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class ShieldCatcher : MonoBehaviour
     [SerializeField] public float launchSpeed = 8f;
     [SerializeField] public Collider2D vortexCatcher;
     [SerializeField] ShieldController shieldController;
+    [SerializeField] RawImage chargeFlash;
+    [SerializeField] float chargeDisappearTime = 0.4f;
+    [SerializeField] float chargeAmount = 1f;
+    float chargeTime = 0f;
     public int polarity = 0;
     //public int curBullets = 0;
     public List<Bullet> bulletSlots = new();
     private float rotation = 0f;
-
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,9 +30,18 @@ public class ShieldCatcher : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        rotation += Time.fixedDeltaTime * vortexRotationSpeed;
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            chargeTime = chargeDisappearTime;
+        }
+
+        chargeTime -= Time.deltaTime;
+        chargeFlash.color = new Color(185f/ 255f, 124f / 255f, 1f, chargeTime / chargeDisappearTime);
+        //chargeFlash.color = new Color(1f, 216f / 255f, 119f / 255f, chargeTime / chargeDisappearTime);
+
+        rotation += Time.deltaTime * vortexRotationSpeed;
         rotation %= 360f;
 
         if(shieldController.polarity != polarity)
