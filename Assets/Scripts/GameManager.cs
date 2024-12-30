@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject player;
-    public bool gameOver = false;
+    public bool gameOver = false, paused = false;
 
     public int nuts = 0;
     public SoundClip pickupSound;
@@ -22,6 +22,31 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (ChangeScene.changingScene || !ScreenWipe.over)
+            {
+                return;
+            }
+
+            if (MainMenuManager.inMainMenu)
+            {
+                return;
+            }
+
+            if (!paused)
+            {
+                Pause();
+            }
+            else
+            {
+                Unpause();
+            }
+        }       
     }
 
     public void HealPlayer(int amt)
@@ -59,5 +84,27 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("SampleScene");
         ChangeScene.changingScene = false;
+    }
+
+    public void Pause()
+    {
+        AudioSource[] sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        paused = true;
+        Time.timeScale = 0;
+        foreach (AudioSource source in sources)
+        {
+            source.Pause();
+        }
+    }
+
+    public void Unpause()
+    {
+        AudioSource[] sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        paused = false;
+        Time.timeScale = 1;
+        foreach (AudioSource source in sources)
+        {
+            source.UnPause();
+        }
     }
 }

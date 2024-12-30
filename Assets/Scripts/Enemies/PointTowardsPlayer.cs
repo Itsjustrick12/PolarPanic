@@ -12,6 +12,8 @@ public class PointTowardsPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.paused) return;
+        
         Vector3 _diff = (playerTransform.position - transform.position).normalized;
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(_diff.y, _diff.x));
         //Debug.DrawRay(transform.position, transform.right, Color.green);

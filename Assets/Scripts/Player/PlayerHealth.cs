@@ -20,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void Update()
     {
+        if (GameManager.instance.paused) return;
+
         if (invincible && !isDead && Time.time >= startInvincibility + maxInvincibility)
         {
             invincible = false;

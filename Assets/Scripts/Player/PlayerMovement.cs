@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.paused) return;
+
         moveX = Input.GetAxisRaw("Horizontal");
         moveY = Input.GetAxisRaw("Vertical");
         if (!dodgeroll)
@@ -119,6 +121,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.instance.paused) return;
+        
         calculatedSpeed = speed;
         if (dodgeroll)
         {

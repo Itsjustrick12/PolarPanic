@@ -25,6 +25,8 @@ public class ChargeBarFlash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.paused) return;
+        
         t -= Time.deltaTime;
         if (t < 0f)
         {

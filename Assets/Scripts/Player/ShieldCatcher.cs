@@ -30,6 +30,8 @@ public class ShieldCatcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.paused) return;
+
         rotation += Time.deltaTime * vortexRotationSpeed;
         rotation %= 360f;
 

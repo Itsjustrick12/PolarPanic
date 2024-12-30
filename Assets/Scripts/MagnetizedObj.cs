@@ -59,6 +59,8 @@ public class MagnetizedObj : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (GameManager.instance.paused) return;
+        
         //CheckRadius();
 
         ApplyForceToNeighbors();

@@ -14,10 +14,4 @@ public class AudioManagerCheck : MonoBehaviour
             Instantiate(audioManager, transform.position, transform.rotation);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
