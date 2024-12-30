@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public bool isDead = false;
 
     public bool invincible = false;
-    public SoundClip hurt, death;
+    public SoundClip hurt, heal, death;
     public SoundPlayer soundPlayer;
     [SerializeField] private GameObject deathEffect;
     public float maxInvincibility = 0.1f;
@@ -45,6 +45,12 @@ public class PlayerHealth : MonoBehaviour
                 invincible = true;
             }
         }
+    }
+
+    public void Heal(float amount)
+    {
+        health = Mathf.Min(health + amount, maxHealth);
+        soundPlayer.PlaySound(heal);
     }
 
     public void Die()

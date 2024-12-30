@@ -81,13 +81,13 @@ MonoBehaviour:
   bottomRight: {fileID: 4641278714003861319}
   objContainer: {fileID: 0}
   spawnObj: {fileID: 3878776338464377130, guid: c8cbd4495bf094b48b3a7255d096c35a, type: 3}
-  enemies: []
   offset: 0.5
   numAlive: 0
   currState: 1
   waveDelay: 3
   timer: 0
   patterns:
+  - {fileID: 11400000, guid: 6728734a1c30c4e409269008c7bd1d17, type: 2}
   - {fileID: 11400000, guid: 6728734a1c30c4e409269008c7bd1d17, type: 2}
   - {fileID: 11400000, guid: 6728734a1c30c4e409269008c7bd1d17, type: 2}
   basicEnemies:

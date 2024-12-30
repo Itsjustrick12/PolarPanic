@@ -322,6 +322,7 @@ MonoBehaviour:
   isDead: 0
   invincible: 0
   hurt: {fileID: 11400000, guid: 19a35960f738b4d4aad00d9632444796, type: 2}
+  heal: {fileID: 11400000, guid: 93f437621b8346e45bc77a0785be8a57, type: 2}
   death: {fileID: 11400000, guid: 9cdae7ab31caebf42be37a90c2a28b62, type: 2}
   soundPlayer: {fileID: 1204054507360643292}
   deathEffect: {fileID: 156844844588030542, guid: f1e8029434d604c4daa8764bfe52600e, type: 3}
