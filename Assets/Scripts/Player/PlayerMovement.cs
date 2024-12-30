@@ -102,13 +102,13 @@ public class PlayerMovement : MonoBehaviour
             dodgerollTime = Time.time + dodgerollLength;
             dodgerollResetTime = Time.time + dodgerollLength + dodgerollCooldown;
             Physics2D.IgnoreLayerCollision(7, 9, true);
-            shield.SetActive(false);
+            //shield.SetActive(false);
         }
 
         if (dodgeroll && Time.time >= dodgerollTime)
         {
             dodgeroll = false;
-            shield.SetActive(true);
+            //shield.SetActive(true);
             Physics2D.IgnoreLayerCollision(7, 9, false);
             Physics2D.IgnoreLayerCollision(7, 8, false);
         }
