@@ -13,13 +13,17 @@ MonoBehaviour:
   m_Name: SmartAttackPattern
   m_EditorClassIdentifier: 
   attackPattern:
-  - pattern: {fileID: 0}
+  - pattern: {fileID: 11400000, guid: 1ccbb120f9a021b409fabad0ad967229, type: 2}
     cooldown: 0
-  - pattern: {fileID: 0}
+  - pattern: {fileID: 11400000, guid: af90b39ee6f7e4a45a7fd1c68f5aee45, type: 2}
     cooldown: 0
-  - pattern: {fileID: 0}
+  - pattern: {fileID: 11400000, guid: 4174112c6f834dd4e80e27f9d9382fec, type: 2}
+    cooldown: 0.3
+  - pattern: {fileID: 11400000, guid: d2dbf1162a524fc419cce8490a75d23d, type: 2}
+    cooldown: 0.15
+  - pattern: {fileID: 11400000, guid: fec432e0e11114a41804443b8f1e4a14, type: 2}
     cooldown: 0
-  - pattern: {fileID: 0}
-    cooldown: 0
+  - pattern: {fileID: 11400000, guid: cefa1133c2e86c5448b57e4407f12419, type: 2}
+    cooldown: 2
   randomOrder: 0
   guaranteeNoRepeats: 1
