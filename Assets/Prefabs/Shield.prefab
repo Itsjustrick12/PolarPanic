@@ -55,7 +55,10 @@ MonoBehaviour:
   polarity: 1
   shieldCollider: {fileID: 6139126103777828128}
   magnetCollider: {fileID: 8858986439827561102}
-  bounceForce: 1.2
+  bounceForce: 1.8
+  maxCharge: 12
+  slider: {fileID: 0}
+  sliderFill: {fileID: 0}
 --- !u!212 &2055329708438071099
 SpriteRenderer:
   m_ObjectHideFlags: 0
