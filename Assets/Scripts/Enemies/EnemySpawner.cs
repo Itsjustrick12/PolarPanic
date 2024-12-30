@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 enum SpawnerState
@@ -45,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float waveDelay = 5f;
     public float timer = 0f;
 
-    [SerializeField] WavePattern[] patterns;
+    [SerializeField] List<WavePattern> patterns;
 
     //For Endless
     public GameObject[] basicEnemies;
@@ -99,15 +100,13 @@ public class EnemySpawner : MonoBehaviour
             {
                 currState = SpawnerState.SPAWNING;
                 Debug.Log("Spawning new wave...");
-                SpawnPattern(patterns[currPat]);
+                SpawnPattern(patterns[0]);
+                patterns.RemoveAt(0);
 
-                if (currPat + 1 > patterns.Length - 1)
+                if (currPat + 1 > patterns.Count - 1 && !endless)
                 {
-                    if (!endless)
-                    {
 
-                        currState = SpawnerState.STOPPED;
-                    }
+                    currState = SpawnerState.STOPPED;
 
                 }
                 else
@@ -120,7 +119,7 @@ public class EnemySpawner : MonoBehaviour
 
                 if (endless)
                 {
-                    currPat--;
+                    currPat = 0;
                     wavesSpawned++;
                     if (wavesSpawned >= waveForHard)
                     {
@@ -130,7 +129,11 @@ public class EnemySpawner : MonoBehaviour
                     {
                         currDifficulty = Difficulty.Medium;
                     }
-                    patterns[currPat] = GeneratePattern();
+
+                    if(patterns.Count == 0)
+                    {
+                        patterns.Add(GeneratePattern());
+                    }
                 }
 
             }
