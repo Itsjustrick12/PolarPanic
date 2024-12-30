@@ -34,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
         {
 
             health -= damage;
+            GameManager.instance.UpdateHealth(health);
             GetComponent<SimpleFlash>().Flash(1, 3, true);
             if (health < 0f && !isDead)
             {
