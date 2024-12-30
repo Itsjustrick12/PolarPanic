@@ -52,7 +52,8 @@ public class Enemy : MonoBehaviour
     private bool isDead = false;
     public static bool bulletSoundPlayingThisFrame = true;
 
-    [SerializeField] List<GameObject> drops;
+    [SerializeField] GameObject mainDrop;
+    [SerializeField] List<GameObject> healthDrops;
     private void Awake()
     {
         SetPolarity(bulletPolarity);
@@ -194,18 +195,21 @@ public class Enemy : MonoBehaviour
 
     private void SpawnPickup()
     {
-        int index = Random.Range(0, drops.Count);
-        if (index >= 3)
+        GameObject newPickup;
+        int chance = Random.Range(0, 3);
+        if (chance == 0)
         {
-            // don't make health TOO common
-            index = Random.Range(0, drops.Count);
+            int index = Random.Range(0, healthDrops.Count);
+            newPickup = Instantiate(healthDrops[index], transform);
         }
-        GameObject newPickup = Instantiate(drops[index], transform);
+        else
+        {
+            newPickup = Instantiate(mainDrop, transform);
+        }
+        
         GameObject temp = GameObject.Find("PickupsContainer");
-
         if (temp != null)
         {
-
             newPickup.transform.parent = temp.transform;
         }
     }
