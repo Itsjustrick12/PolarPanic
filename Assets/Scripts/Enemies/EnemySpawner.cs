@@ -283,7 +283,7 @@ public class EnemySpawner : MonoBehaviour
 
 
         WavePattern newPattern = ScriptableObject.CreateInstance<WavePattern>();
-        newPattern = new WavePattern(type, amt, randomPrimary, randomSecondary, includeSpacing);
+        newPattern = WavePattern.CreateInstance(type, amt, randomPrimary, randomSecondary, includeSpacing);
         return newPattern;
 
         
