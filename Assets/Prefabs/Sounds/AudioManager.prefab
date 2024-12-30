@@ -60,5 +60,5 @@ MonoBehaviour:
   paused: 0
   normal: {fileID: 24500006, guid: 0a55a7605b1e0414293560dbe5625874, type: 2}
   hurt: {fileID: -780703057569719066, guid: 0a55a7605b1e0414293560dbe5625874, type: 2}
-  soundDatabase: {fileID: 11400000, guid: 82152fdb8a2a7c742be6e2a8f0d8cd90, type: 2}
+  soundDatabase: {fileID: 11400000, guid: bdb81098d5ffa82479ae3ee20c1313cf, type: 2}
   musicDatabase: {fileID: 11400000, guid: a9246313b2edd7c4fb07feb07a77ace8, type: 2}
