@@ -120,13 +120,13 @@ public class SimpleFlash : MonoBehaviour
             spriteRenderer.color = flashColor;
 
             // Pause the execution of this function for "duration" seconds.
-            yield return new WaitForSecondsRealtime(duration / amount / 2);
+            yield return new WaitForSeconds(duration / amount / 2);
 
             // After the pause, swap back to the original material.
             //spriteRenderer.material = originalMaterial;
             spriteRenderer.color = originalColor;
 
-            yield return new WaitForSecondsRealtime(duration / amount / 2);
+            yield return new WaitForSeconds(duration / amount / 2);
         }
 
         // Set the routine to null, signaling that it's finished.

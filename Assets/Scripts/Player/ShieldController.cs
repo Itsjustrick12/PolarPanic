@@ -42,6 +42,16 @@ public class ShieldController : MonoBehaviour
         charge = maxCharge;
     }
 
+    public void StopSounds()
+    {
+        soundPlayer.EndSound(magStart1);
+        soundPlayer.EndSound(magMiddle1);
+        soundPlayer.EndSound(magEnd1);
+        soundPlayer.EndSound(magStart2);
+        soundPlayer.EndSound(magMiddle2);
+        soundPlayer.EndSound(magEnd2);
+    }
+
     void Update()
     {
         if (GameManager.instance.paused || GameManager.instance.gameOver) return;

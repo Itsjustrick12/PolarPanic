@@ -984,6 +984,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &539017700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2339034056926762324, guid: b8fa86e4f296af44ab844c6492e13180, type: 3}
+  m_PrefabInstance: {fileID: 1620054534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8f2ae44ef6f2c4c9c81367400df9fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &549550739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,6 +2627,7 @@ MonoBehaviour:
   pickupSound: {fileID: 11400000, guid: 9e6d07710ff55c74685bb90d89751be6, type: 2}
   buttonClick: {fileID: 11400000, guid: 05160ec723370a64eb092feb9a2303a0, type: 2}
   soundPlayer: {fileID: 1663265426}
+  shield: {fileID: 539017700}
   gameScene: 1
 --- !u!4 &1031503550
 Transform:
