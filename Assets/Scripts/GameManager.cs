@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int nuts = 0;
     public SoundClip pickupSound, buttonClick;
     public SoundPlayer soundPlayer;
+    public ShieldController shield;
 
     public bool gameScene = true;
 
@@ -99,19 +100,17 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         AudioManager.instance.Stop();
+        shield.StopSounds();
         gameOverScreen.SetActive(true);
         darkScreen.SetActive(true);
         gameOver = true;
-        AudioSource[] sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
         Time.timeScale = 0;
-        Debug.Log("Player Has Died");
     }
 
     // TODO @Rick call this from Game Over menu button
     public void Retry()
     {
         soundPlayer.PlaySound(buttonClick);
-        gameOver = false;
         MainMenuManager.inMainMenu = false;
         if (!ChangeScene.changingScene)
         {
@@ -123,7 +122,6 @@ public class GameManager : MonoBehaviour
     public void ToMenu()
     {
         soundPlayer.PlaySound(buttonClick);
-        gameOver = false;
         if (!ChangeScene.changingScene)
         {
             StartCoroutine(LoadScene("MainMenu"));
@@ -137,6 +135,8 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.FadeOutCurrent();
         ScreenWipe.current.WipeIn();
         yield return new WaitForSecondsRealtime(1f);
+        gameOver = false;
+        paused = false;
         ScreenWipe.current.GetComponent<Animator>().updateMode = AnimatorUpdateMode.Normal;
         Time.timeScale = 1;
         SceneManager.LoadScene(scene);
